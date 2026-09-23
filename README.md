@@ -261,7 +261,7 @@ platform and may not be redistributed or used in production. See
 ### Trademarks
 
 The license grants no rights to UNITH's names, logos, or other trademarks.
-"UNITH" and the UNITH logo are trademarks of UNITH and may not be used to
+"UNITH" and the UNITH logo are trademarks of Unith Research Labs, S.L and may not be used to
 endorse or promote products derived from this kit, or in a way that suggests
 affiliation with or endorsement by UNITH, without prior written permission.
 Meridian Insurance is a fictional company used for demonstration only.

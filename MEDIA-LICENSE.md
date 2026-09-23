@@ -7,7 +7,7 @@ files:
 - `sample-avatar.mp4`
 - `sample-avatar-expressive.mp4`
 
-Copyright 2026 UNITH. All rights reserved.
+Copyright 2026 Unith Research Labs, S.L. All rights reserved.
 
 These files are provided solely for testing and evaluating the UNITH platform,
 for example by working through the custom-avatar chapter of this kit. You may
