@@ -1,10 +1,10 @@
 blank_issues_enabled: false
 contact_links:
   - name: Technical support
-    url: https://github.com/unith-ai/live-kit/blob/main/SUPPORT.md
+    url: https://github.com/unith-ai/dev-kit/blob/main/SUPPORT.md
     about: Questions about the kit or the UNITH platform — contact support@unith.ai.
   - name: Report a security vulnerability
-    url: https://github.com/unith-ai/live-kit/security/policy
+    url: https://github.com/unith-ai/dev-kit/security/policy
     about: Report security issues privately. Do not open a public issue.
   - name: UNITH documentation
     url: https://docs.unith.ai

@@ -10,7 +10,7 @@ body:
 
         **Never include secret keys, bearer tokens, API keys, webhook shared keys, or customer data.** Issues may become publicly visible.
 
-        - Security vulnerabilities: follow [SECURITY.md](https://github.com/unith-ai/live-kit/security/policy) and report them privately.
+        - Security vulnerabilities: follow [SECURITY.md](https://github.com/unith-ai/dev-kit/security/policy) and report them privately.
         - Questions and account or platform issues: email [support@unith.ai](mailto:support@unith.ai).
   - type: dropdown
     id: component

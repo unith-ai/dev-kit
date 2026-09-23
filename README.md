@@ -85,12 +85,12 @@ The demo websites use **Meridian Insurance**, a fictional company.
 Clone the repository:
 
 ```bash
-git clone https://github.com/unith-ai/live-kit.git
-cd live-kit
+git clone https://github.com/unith-ai/dev-kit.git
+cd dev-kit
 ```
 
 Or download the ZIP package from the
-[latest release](https://github.com/unith-ai/live-kit/releases/latest) and
+[latest release](https://github.com/unith-ai/dev-kit/releases/latest) and
 extract it.
 
 ### 2. Run the setup
