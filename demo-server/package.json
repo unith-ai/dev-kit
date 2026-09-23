@@ -2,6 +2,7 @@
   "name": "unith-demo-server",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT-0",
   "description": "UNITH technical onboarding demo — plugin-mode server, webhook receiver, and API scripts. Zero dependencies.",
   "type": "module",
   "engines": {

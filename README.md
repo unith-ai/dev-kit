@@ -249,5 +249,22 @@ requests will be closed without review. To suggest an improvement, contact
 
 ## License
 
-This repository does not currently include a license. For questions about
-usage terms, contact [support@unith.ai](mailto:support@unith.ai).
+The source code and documentation in this repository are licensed under the
+[MIT No Attribution license](LICENSE) (MIT-0). You can use, copy, and modify
+them in your own projects without attribution.
+
+The sample videos (`sample-avatar.mp4` and `sample-avatar-expressive.mp4`) are
+**not** covered by MIT-0. They are provided solely for testing the UNITH
+platform and may not be redistributed or used in production. See
+[`MEDIA-LICENSE.md`](MEDIA-LICENSE.md).
+
+### Trademarks
+
+The license grants no rights to UNITH's names, logos, or other trademarks.
+"UNITH" and the UNITH logo are trademarks of Unith Research Labs, S.L and may not be used to
+endorse or promote products derived from this kit, or in a way that suggests
+affiliation with or endorsement by UNITH, without prior written permission.
+Meridian Insurance is a fictional company used for demonstration only.
+
+For questions about usage terms, contact
+[support@unith.ai](mailto:support@unith.ai).
