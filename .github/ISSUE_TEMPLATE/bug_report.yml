@@ -1,0 +1,76 @@
+name: Bug report
+description: Report something in the UNITH Developer Kit that does not work as documented.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a problem.
+
+        **Never include secret keys, bearer tokens, API keys, webhook shared keys, or customer data.** Issues may become publicly visible.
+
+        - Security vulnerabilities: follow [SECURITY.md](https://github.com/unith-ai/live-kit/security/policy) and report them privately.
+        - Questions and account or platform issues: email [support@unith.ai](mailto:support@unith.ai).
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the kit is affected?
+      options:
+        - Companion guide (companion/index.html)
+        - Demo server or npm scripts (demo-server/)
+        - Embedding demos (demo-embed/)
+        - setup.sh or start.sh
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Kit version
+      description: The release tag or commit you are using.
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node.js version (`node --version`), and browser.
+      placeholder: macOS 15, Node.js 22.x, Chrome 140
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant console output
+      description: Paste relevant output from the terminal or browser console. Remove all credentials first.
+      render: shell
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have removed all credentials, tokens, and personal data from this report.
+          required: true
+        - label: I have checked the Troubleshooting section of the README.
+          required: true

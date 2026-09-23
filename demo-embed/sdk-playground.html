@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNITH SDK Playground</title>
+<!--
+  Chapter 7 — the full @unith-ai/core-client (v3) API surface, live.
+  Open with credentials in the URL (nothing is stored):
+    http://localhost:8080/sdk-playground.html?org=…&head=…&key=…
+
+  v3 mental model: turn-based conversation driven by OBSERVABLES —
+  you subscribe to state (turn, messages, connection…) instead of callbacks.
+  Playback requires a user gesture: startDigitalHuman() connects and shows the
+  idle avatar; the Start button calls startSession() to begin audio/video.
+-->
+<style>
+  :root {
+    --bg: #0f1c26; --panel: #14222e; --line: rgba(255,255,255,0.12);
+    --text: rgba(255,255,255,0.92); --text-2: rgba(255,255,255,0.6);
+    --blue: #9ab7d0; --accent: #2563eb; --ok: #7fd0a8; --warn: #e3b968;
+    --user: #7fd0a8; --ai: #9ab7d0;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; height: 100vh; display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; gap: 14px; padding: 12px 20px; border-bottom: 1px solid var(--line); font-size: 0.875rem; flex-wrap: wrap; }
+  header .title { font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.75rem; }
+  .chip { font-family: var(--mono); font-size: 0.71875rem; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); }
+  .chip b { color: var(--text); font-weight: 600; }
+  .chip.on b { color: var(--ok); }
+  .chip.busy b { color: var(--warn); }
+  .split { flex: 1; display: flex; min-height: 0; }
+  .stage-col { flex: 1; display: flex; flex-direction: column; padding: 16px; gap: 10px; min-width: 0; }
+  .stage-wrap { position: relative; flex: 1; }
+  #stage { position: absolute; inset: 0; border: 1px solid var(--line); border-radius: 12px; background: #050d13; overflow: hidden; }
+  #start-overlay {
+    position: absolute; inset: 0; display: grid; place-items: center; z-index: 5;
+    background: rgba(5, 13, 19, 0.55); border-radius: 12px;
+  }
+  #start-overlay button {
+    background: var(--accent); color: #fff; border: none; border-radius: 999px;
+    padding: 14px 30px; font-size: 1rem; font-weight: 600; cursor: pointer;
+  }
+  #caption {
+    min-height: 24px; text-align: center; font-size: 0.9375rem; color: var(--blue);
+    font-style: italic;
+  }
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; }
+  .controls button {
+    background: transparent; border: 1px solid var(--line); color: var(--text);
+    border-radius: 8px; padding: 7px 12px; font-size: 0.8125rem; cursor: pointer;
+    font-family: var(--mono);
+  }
+  .controls button:hover:not(:disabled) { border-color: var(--blue); }
+  .controls button:disabled { opacity: 0.35; cursor: default; }
+  .controls button.danger { border-color: rgba(227, 106, 106, 0.5); }
+  .side { width: 460px; border-left: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+  .side .label { padding: 9px 16px; font-family: var(--mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-2); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; }
+  #transcript { flex: 1.2; overflow-y: auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .bub { max-width: 82%; padding: 7px 11px; border-radius: 12px; font-size: 0.84375rem; line-height: 1.5; }
+  .bub.user { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 3px; }
+  .bub.ai { align-self: flex-start; background: var(--panel); border: 1px solid var(--line); border-bottom-left-radius: 3px; }
+  #eventlog { flex: 1; overflow-y: auto; padding: 10px 16px; font-family: var(--mono); font-size: 0.71875rem; line-height: 1.7; color: var(--text-2); border-top: 1px solid var(--line); }
+  #eventlog .t { color: var(--blue); }
+  .composer { border-top: 1px solid var(--line); padding: 12px 16px; background: var(--panel); display: flex; flex-direction: column; gap: 8px; }
+  .row-input { display: flex; gap: 8px; }
+  input[type=text] { flex: 1; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; color: var(--text); padding: 9px 12px; font-size: 0.875rem; }
+  .composer button.send { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px 16px; font-weight: 600; cursor: pointer; }
+  .composer button.send:disabled { opacity: 0.4; }
+  .composer .ghost { background: transparent; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 8px 12px; font-size: 0.8125rem; cursor: pointer; }
+  #timeout-banner { display: none; background: rgba(214,158,46,0.15); border: 1px solid rgba(214,158,46,0.4); color: var(--warn); border-radius: 8px; padding: 8px 12px; font-size: 0.8125rem; }
+  #timeout-banner button { margin-left: 10px; }
+  #limit-banner { display: none; background: rgba(227,106,106,0.15); border: 1px solid rgba(227,106,106,0.5); color: #e8a0a0; border-radius: 8px; padding: 8px 12px; font-size: 0.8125rem; }
+  #limit-banner a { color: inherit; }
+
+  /* Hover tooltips — one fixed-position bubble, clamped to the viewport so it
+     never gets cut by screen edges or scrolling containers. */
+  #tipbox {
+    position: fixed;
+    z-index: 9999;
+    display: none;
+    max-width: 300px;
+    background: #050d13;
+    border: 1px solid var(--blue);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    padding: 8px 11px;
+    border-radius: 8px;
+    pointer-events: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="title">UNITH · SDK Playground <small style="color:var(--text-2)">@unith-ai/core-client v3</small></span>
+  <span class="chip" data-tip="session.session — the connection lifecycle: idle → connecting → connected → reconnecting / disconnected. When connected it carries the sessionId; when disconnected, a reason (user, error, timeout, high_demand…).">connection <b id="st-conn">idle</b></span>
+  <span class="chip" data-tip="session.turn — the heart of the SDK: a conversation is turn-based. idle (your turn) → thinking (AI generating) → ai-speaking (avatar talking) → back to idle. New messages are ONLY accepted while idle.">turn <b id="st-turn">—</b></span>
+  <span class="chip" data-tip="session.microphone — speech input status: off / recording / processing. This playground uses the eleven_labs provider in always-on mode: while listening, your speech is transcribed and sent automatically.">mic <b id="st-mic">—</b></span>
+  <span class="chip" data-tip="session.isMuted — whether the avatar audio output is muted. Flip it with the toggleMute() button below.">muted <b id="st-muted">—</b></span>
+  <span class="chip" data-tip="session.captionsEnabled — captions on/off. When on, the text of what the avatar is saying streams segment by segment (shown under the video).">captions <b id="st-cap">—</b></span>
+</header>
+
+<div class="split">
+  <div class="stage-col">
+    <div class="stage-wrap">
+      <div id="stage"></div>
+      <div id="start-overlay"><button id="btn-start" type="button" data-tip="startSession() — begins audio + video playback. Browsers only allow sound started by a real user click: without this gesture the head loads but never speaks. That is why this button exists.">▶ Start session</button></div>
+    </div>
+    <div id="caption"></div>
+    <div id="timeout-banner">⏳ Inactivity warning — the session will expire. <button class="ghost" id="btn-keep" type="button" data-tip="keepSession() — extends an idle session. The session.timeout stream fires a warning before expiry; call this to stay alive.">keepSession()</button></div>
+    <div id="limit-banner">⚠ <strong>Concurrency limit reached</strong> — every open conversation holds one of your org's slots (a developer account has 3, and every open tab counts). Close another session and reload. Need more concurrency? <a href="mailto:sales@unith.ai">sales@unith.ai</a></div>
+    <div class="controls">
+      <button id="btn-stop" type="button" disabled data-tip="stopResponse() — barge-in: cuts the avatar off mid-answer. Only enabled while the turn is ai-speaking; the turn then goes interrupting → idle and you can talk again.">stopResponse() — interrupt</button>
+      <button id="btn-mute" type="button" disabled data-tip="toggleMute() — mutes / unmutes the avatar audio. The video keeps playing; the muted chip above reflects the state.">toggleMute()</button>
+      <button id="btn-captions" type="button" disabled data-tip="toggleCaptions() — turns captions on/off. Caption text arrives through the session.caption stream and shows under the video while the avatar speaks.">toggleCaptions()</button>
+      <button id="btn-mic" type="button" disabled data-tip="toggleMicrophone() — starts / stops continuous listening (always-on mode). While on, your speech is transcribed live (watch the transcription entries in the event log) and sent as your turn.">toggleMicrophone()</button>
+      <button id="btn-end" type="button" class="danger" disabled data-tip="endSession() — clean teardown: closes the streaming connection, stops the microphone, releases the screen wake-lock. Always call it when your user leaves.">endSession()</button>
+    </div>
+  </div>
+  <aside class="side">
+    <div class="label"><span data-tip="session.messages — the full transcript as a state observable: it re-emits the whole ordered list on every change, with role (user/ai), text and timestamp per message.">Transcript — session.messages</span></div>
+    <div id="transcript"></div>
+    <div class="label"><span data-tip="Everything the SDK emits, as it happens: connection changes, turn changes, errors, live speech-to-text (transcription), inactivity warnings. In v3 you subscribe to these observables instead of passing callbacks.">Event log — observables, live</span></div>
+    <div id="eventlog"></div>
+    <div class="composer">
+      <div class="row-input">
+        <input type="text" id="msg" placeholder="sendMessage() — only accepted while turn is idle" aria-label="Message">
+        <button class="send" id="btn-send" type="button" disabled data-tip="sendMessage(text) — sends your text as a user turn. Only accepted while the turn is idle (that is why it disables itself while the AI thinks or speaks).">Send</button>
+      </div>
+      <button class="ghost" id="btn-context" type="button" disabled data-tip="Your app can speak to the head too: send events or page context as messages (here: the visitor opened pricing) and the avatar reacts to it in conversation.">Inject page context — "the visitor is on the pricing page"</button>
+    </div>
+  </aside>
+</div>
+
+<script>
+  // Tooltip singleton — appended to <body>, positioned in viewport coordinates.
+  (function () {
+    const tip = document.createElement('div');
+    tip.id = 'tipbox';
+    document.body.appendChild(tip);
+    const show = (el) => {
+      tip.textContent = el.dataset.tip;
+      tip.style.display = 'block';
+      const r = el.getBoundingClientRect();
+      const tw = tip.offsetWidth, th = tip.offsetHeight;
+      let x = r.left + r.width / 2 - tw / 2;
+      x = Math.max(8, Math.min(x, window.innerWidth - tw - 8));
+      let y = r.top - th - 8;
+      if (y < 8) y = r.bottom + 8;
+      if (y + th > window.innerHeight - 8) y = Math.max(8, window.innerHeight - th - 8);
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    };
+    const hide = () => { tip.style.display = 'none'; };
+    document.querySelectorAll('[data-tip]').forEach((el) => {
+      el.addEventListener('mouseenter', () => show(el));
+      el.addEventListener('mouseleave', hide);
+      el.addEventListener('focus', () => show(el));
+      el.addEventListener('blur', hide);
+    });
+    window.addEventListener('scroll', hide, true);
+  })();
+</script>
+<script type="module">
+  const $ = (id) => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  const orgId = params.get('org'), headId = params.get('head'), apiKey = params.get('key');
+
+  // Concurrency limit — the platform drops/refuses sessions over the org's
+  // limit (a developer account has 3 concurrent slots; every open tab holds
+  // one). The SDK reports it on session.session as a disconnect with
+  // reason "concurrency_limit_reached" (or "high_demand") — surface it.
+  window.warnIfLimit = (reason) => {
+    if (['concurrency_limit_reached', 'high_demand'].includes(reason)) $('limit-banner').style.display = 'block';
+  };
+
+  const log = (tag, detail) => {
+    const el = $('eventlog');
+    const line = document.createElement('div');
+    const t = document.createElement('span');
+    t.className = 't';
+    t.textContent = new Date().toLocaleTimeString([], { hour12: false }) + ' ' + tag + ' ';
+    line.appendChild(t);
+    line.appendChild(document.createTextNode(detail));
+    el.prepend(line);
+  };
+
+  if (!orgId || !headId || !apiKey) {
+    log('setup', 'Missing credentials — add ?org=…&head=…&key=… to the URL.');
+  } else {
+    try {
+      const { Session } = await import('https://esm.sh/@unith-ai/core-client@latest');
+      log('setup', 'SDK loaded from esm.sh. Connecting (startDigitalHuman)…');
+
+      // 1. Connect + render the idle avatar. Playback comes later, on a click.
+      const session = await Session.startDigitalHuman($('stage'), {
+        orgId, headId, apiKey,
+        username: 'sdk-playground',
+        dataTag: 'onboarding-session',
+        microphone: { provider: 'eleven_labs', mode: 'always-on' },
+      });
+      window.session = session; // inspect it from DevTools
+
+      // 2. Subscribe to EVERY observable — this is "how it works behind".
+      session.session.subscribe((s) => {
+        $('st-conn').textContent = s.status;
+        log('connection', s.status + (s.status === 'connected' ? ` · session ${s.sessionId.slice(0, 8)}…` : '') + (s.status === 'disconnected' ? ` · reason: ${s.reason}` : ''));
+        if (s.status === 'disconnected') window.warnIfLimit(s.reason);
+      });
+      session.turn.subscribe((turn) => {
+        $('st-turn').textContent = turn.state;
+        log('turn', turn.state);
+        const idle = turn.state === 'idle' && session.isSessionStarted.value;
+        $('btn-send').disabled = !idle;
+        $('btn-context').disabled = !idle;
+        $('btn-stop').disabled = turn.state !== 'ai-speaking';
+      });
+      session.messages.subscribe((messages) => {
+        const t = $('transcript');
+        t.innerHTML = '';
+        for (const m of messages) {
+          const b = document.createElement('div');
+          b.className = 'bub ' + (m.role === 'user' ? 'user' : 'ai');
+          b.textContent = m.text;
+          t.appendChild(b);
+        }
+        t.scrollTop = t.scrollHeight;
+      });
+      session.caption.subscribe((text) => { $('caption').textContent = text; });
+      session.transcription.subscribe((tr) => log('transcription', `${tr.kind ?? ''} ${tr.text ?? ''}`.trim()));
+      session.errors.subscribe((err) => {
+        log('error', err.kind ?? JSON.stringify(err).slice(0, 120));
+        window.warnIfLimit(err.error_type ?? err.kind);
+      });
+      session.timeout.subscribe((t) => {
+        log('timeout', JSON.stringify(t).slice(0, 100));
+        $('timeout-banner').style.display = t.active && t.kind === 'warning' ? 'block' : 'none';
+      });
+      session.isMuted.subscribe((m) => { $('st-muted').textContent = String(m); });
+      session.captionsEnabled.subscribe((c) => { $('st-cap').textContent = String(c); });
+      session.microphone.subscribe((m) => { $('st-mic').textContent = m.status ?? m.mode ?? '—'; });
+      session.isSessionStarted.subscribe((started) => {
+        for (const id of ['btn-mute', 'btn-captions', 'btn-mic', 'btn-end']) $(id).disabled = !started;
+      });
+
+      // 3. Playback needs a user gesture — THE Start button.
+      $('btn-start').addEventListener('click', async () => {
+        await session.startSession();
+        $('start-overlay').remove();
+        log('setup', 'startSession() — playback running. Say hello!');
+      });
+
+      // 4. The full control surface.
+      const send = (text) => {
+        if (!text.trim()) return;
+        if (session.turn.value.state !== 'idle') { log('sendMessage', 'ignored — turn is not idle'); return; }
+        session.sendMessage(text);
+      };
+      $('btn-send').addEventListener('click', () => { send($('msg').value); $('msg').value = ''; });
+      $('msg').addEventListener('keydown', (e) => { if (e.key === 'Enter') { send($('msg').value); $('msg').value = ''; } });
+      $('btn-context').addEventListener('click', () => send('Context: the visitor has just opened the pricing page. Offer to explain the plans.'));
+      $('btn-stop').addEventListener('click', () => session.stopResponse());
+      $('btn-mute').addEventListener('click', () => session.toggleMute());
+      $('btn-captions').addEventListener('click', () => session.toggleCaptions());
+      $('btn-mic').addEventListener('click', () => session.toggleMicrophone());
+      $('btn-keep').addEventListener('click', () => { session.keepSession(); $('timeout-banner').style.display = 'none'; });
+      $('btn-end').addEventListener('click', () => session.endSession());
+    } catch (err) {
+      log('fatal', err.message);
+    }
+  }
+</script>
+
+</body>
+</html>

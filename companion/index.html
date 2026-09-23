@@ -1,0 +1,2603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNITH Developer Onboarding</title>
+<meta name="description" content="Companion guide for the UNITH technical onboarding: every command, payload, and doc link, chapter by chapter.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+  /* ============ UNITH brand tokens (from unith-website/tokens.css) ============ */
+  :root {
+    --navy-950: #050d13;
+    --navy-900: #0f1c26;
+    --navy-800: #1c2b38;
+    --navy-600: #344b60;
+    --steel-600: #576c7d;
+    --blue-500: #6994b9;
+    --blue-300: #9ab7d0;
+    --blue-200: #ccdae7;
+    --blue-50: #eef2f8;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+
+    /* Light theme (default) */
+    --bg: #ffffff;
+    --bg-2: #f9fafa;
+    --bg-rail: #eef2f8;
+    --text: #1a1a1a;
+    --text-2: #5c5c58;
+    --text-3: #8a938f;
+    --line: #e2e8f0;
+    --line-strong: #c8ced6;
+    --eyebrow: #576c7d;
+    --chip-bg: #eef2f8;
+    --chip-text: #344b60;
+    --link: #2563eb;
+    --card: #f9fafa;
+    --todo-bg: #fdf3e4;
+    --todo-text: #8a5a1c;
+    --todo-line: #ecd9b8;
+    --ok: #177a4c;
+
+    /* Terminal blocks stay navy in both themes (brand-committed) */
+    --term-bg: #050d13;
+    --term-text: #d7e2ec;
+    --term-dim: #6f8496;
+    --term-line: #1c2b38;
+    --term-accent: #9ab7d0;
+
+    --font-body: 'Inter Variable', 'Inter', 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+    /* Wordmark is a black PNG — inverted to white on dark grounds */
+    --logo-filter: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1c26;
+      --bg-2: #14222e;
+      --bg-rail: #0a141c;
+      --text: rgba(255, 255, 255, 0.92);
+      --text-2: rgba(255, 255, 255, 0.65);
+      --text-3: rgba(255, 255, 255, 0.45);
+      --line: rgba(255, 255, 255, 0.12);
+      --line-strong: rgba(255, 255, 255, 0.22);
+      --eyebrow: #9ab7d0;
+      --chip-bg: rgba(154, 183, 208, 0.14);
+      --chip-text: #ccdae7;
+      --link: #9ab7d0;
+      --card: #14222e;
+      --todo-bg: rgba(214, 158, 46, 0.12);
+      --todo-text: #e3b968;
+      --todo-line: rgba(214, 158, 46, 0.3);
+      --ok: #7fd0a8;
+      --logo-filter: invert(1);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1c26;
+    --bg-2: #14222e;
+    --bg-rail: #0a141c;
+    --text: rgba(255, 255, 255, 0.92);
+    --text-2: rgba(255, 255, 255, 0.65);
+    --text-3: rgba(255, 255, 255, 0.45);
+    --line: rgba(255, 255, 255, 0.12);
+    --line-strong: rgba(255, 255, 255, 0.22);
+    --eyebrow: #9ab7d0;
+    --chip-bg: rgba(154, 183, 208, 0.14);
+    --chip-text: #ccdae7;
+    --link: #9ab7d0;
+    --card: #14222e;
+    --todo-bg: rgba(214, 158, 46, 0.12);
+    --todo-text: #e3b968;
+    --todo-line: rgba(214, 158, 46, 0.3);
+    --ok: #7fd0a8;
+    --logo-filter: invert(1);
+  }
+
+  * { box-sizing: border-box; }
+  img.logo {
+    display: block;
+    height: 18px;
+    width: auto;
+    filter: var(--logo-filter);
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ Layout: fixed rail + content ============ */
+  .shell { display: flex; min-height: 100vh; }
+
+  nav.rail {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    width: 300px;
+    flex-shrink: 0;
+    background: var(--bg-rail);
+    border-right: 1px solid var(--line);
+    padding: 32px 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rail .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .rail .brand span { color: var(--blue-500); }
+  .rail .session-len {
+    font-size: 0.75rem;
+    color: var(--text-3);
+    margin-bottom: 20px;
+  }
+  .rail a.chapter-link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-2);
+    font-size: 0.875rem;
+    line-height: 1.35;
+  }
+  .rail a.chapter-link:hover { background: var(--chip-bg); color: var(--text); }
+  .rail a.chapter-link.active { background: var(--chip-bg); color: var(--text); font-weight: 600; }
+  .rail a.chapter-link .num {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--text-3);
+    min-width: 1.4em;
+    font-variant-numeric: tabular-nums;
+  }
+  .rail a.chapter-link.active .num { color: var(--accent); }
+  .rail a.chapter-link .mins {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--text-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 56px clamp(24px, 5vw, 80px) 120px;
+  }
+  .content { max-width: 760px; }
+
+  /* ============ Header ============ */
+  header.page-head { margin-bottom: 56px; }
+  .page-head .eyebrow {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--eyebrow);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .page-head h1 {
+    font-size: clamp(1.75rem, 1.05rem + 2.6vw, 2.75rem);
+    line-height: 1.12;
+    margin: 0 0 16px;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .page-head p.lede {
+    font-size: 1.125rem;
+    color: var(--text-2);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* ============ Chapters ============ */
+  section.chapter {
+    padding-top: 48px;
+    margin-top: 24px;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 24px;
+  }
+  .chapter .eyebrow {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--eyebrow);
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .chapter .eyebrow .mins { color: var(--text-3); letter-spacing: 0.06em; font-family: var(--font-mono); }
+  .chapter h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 10px 0 8px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .chapter p.goal { color: var(--text-2); margin: 0 0 20px; max-width: 62ch; }
+  .chapter p { max-width: 62ch; }
+
+  /* ============ Terminal blocks ============ */
+  .term {
+    position: relative;
+    background: var(--term-bg);
+    border: 1px solid var(--term-line);
+    border-radius: 12px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+  .term .term-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--term-dim);
+    border-bottom: 1px solid var(--term-line);
+  }
+  .term pre {
+    margin: 0;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--term-text);
+  }
+  .term pre .c { color: var(--term-dim); }      /* comment */
+  .term pre .a { color: var(--term-accent); }   /* accent / flag */
+  .term button.copy {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    background: transparent;
+    color: var(--term-dim);
+    border: 1px solid var(--term-line);
+    border-radius: 6px;
+    padding: 3px 10px;
+    cursor: pointer;
+  }
+  .term button.copy:hover { color: var(--term-text); border-color: var(--term-dim); }
+  .term button.copy:focus-visible { outline: 2px solid var(--blue-300); outline-offset: 2px; }
+
+  /* ============ Callouts, chips, tables ============ */
+  .watch {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--blue-500);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 0.9375rem;
+    color: var(--text-2);
+  }
+  .watch strong { color: var(--text); }
+
+  .todo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--todo-bg);
+    color: var(--todo-text);
+    border: 1px solid var(--todo-line);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .docs a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.78125rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .docs a:hover { border-color: var(--line-strong); color: var(--text); }
+  .docs a::before { content: "↗"; font-size: 0.6875rem; color: var(--blue-500); }
+
+  .tbl-wrap { overflow-x: auto; margin: 16px 0; }
+  table {
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    min-width: 480px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 14px 8px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    font-weight: 600;
+  }
+  td code, p code, li code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--chip-bg);
+    border-radius: 5px;
+    padding: 1px 6px;
+    color: var(--text);
+  }
+
+  a { color: var(--link); }
+  ul, ol { padding-left: 22px; color: var(--text); }
+  li { margin: 4px 0; max-width: 60ch; }
+  li::marker { color: var(--blue-500); }
+
+  details { margin: 12px 0; }
+  summary {
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--text-2);
+    font-weight: 500;
+  }
+  summary:hover { color: var(--text); }
+
+  /* ============ Closing panel ============ */
+  .bridge {
+    background: var(--navy-900);
+    color: rgba(255, 255, 255, 0.92);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-top: 48px;
+  }
+  .bridge .eyebrow { color: var(--blue-300); }
+  .bridge h2 { color: #ffffff; margin: 10px 0 8px; font-size: 1.5rem; letter-spacing: -0.01em; }
+  .bridge p { color: rgba(255, 255, 255, 0.75); max-width: 60ch; }
+  .bridge strong { color: #ffffff; }
+  .bridge .phases {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .bridge .phase {
+    flex: 1;
+    min-width: 160px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .bridge .phase h3 { color: #fff; margin: 8px 0 6px; font-size: 1rem; }
+  .bridge .phase p { font-size: 0.8125rem; margin: 0; color: rgba(255, 255, 255, 0.7); }
+  .bridge .phase-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--blue-500); color: #fff;
+    display: grid; place-items: center;
+    font-size: 0.8125rem; font-weight: 700;
+  }
+  .bridge .phase-arrow { align-self: center; color: var(--blue-300); font-size: 1.25rem; }
+  .bridge a { color: var(--blue-300); }
+  .bridge .bridge-contact {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 1rem;
+  }
+  @media (max-width: 720px) { .bridge .phase-arrow { display: none; } }
+
+  footer.page-foot {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 0.8125rem;
+    color: var(--text-3);
+  }
+
+  /* ============ Session data panel ============ */
+  .creds {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 272px;
+    background: var(--card);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(12, 24, 34, 0.18);
+    z-index: 50;
+    font-size: 0.8125rem;
+  }
+  .creds-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    font-weight: 600;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--eyebrow);
+  }
+  .creds-head button,
+  .creds-foot button {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text-2);
+    font-size: 0.6875rem;
+    padding: 2px 8px;
+    cursor: pointer;
+  }
+  .creds-head button:hover, .creds-foot button:hover { color: var(--text); border-color: var(--line-strong); }
+  .creds-body { padding: 10px 14px 12px; display: flex; flex-direction: column; gap: 7px; max-height: 70vh; overflow-y: auto; }
+  .creds-body label { display: flex; flex-direction: column; gap: 2px; color: var(--text-3); font-size: 0.6875rem; }
+  .creds-body input {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    width: 100%;
+  }
+  .creds-body input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+  .creds-body input.set { border-color: var(--blue-500); }
+  .creds-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 4px; }
+  .creds-foot .hint { font-size: 0.625rem; color: var(--text-3); }
+  .creds-bubble {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    border-radius: 999px;
+    background: var(--navy-800);
+    color: #fff;
+    border: 1px solid var(--line-strong);
+    font-weight: 600;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px 8px 10px;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow: 0 4px 14px rgba(12, 24, 34, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .creds-bubble img { width: 20px; height: 20px; border-radius: 50%; display: block; }
+  .creds-bubble[hidden] { display: none; }
+
+  /* ============ Live API explorer (Chapter 2) ============ */
+  .explorer {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin: 16px 0;
+    background: var(--card);
+    overflow: hidden;
+  }
+  .explorer-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.875rem;
+  }
+  button.run, .pager button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.78125rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    cursor: pointer;
+  }
+  .explorer-head button.run { margin-left: auto; }
+  button.run:hover, .pager button:hover:not(:disabled) { background: var(--accent-hover); }
+  button.run:focus-visible, .pager button:focus-visible { outline: 2px solid var(--blue-300); outline-offset: 2px; }
+  .explorer-body { padding: 14px; }
+  .explorer .placeholder { color: var(--text-3); font-size: 0.875rem; }
+  .explorer .error { color: var(--todo-text); font-size: 0.875rem; }
+  .visual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+  }
+  .visual-card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .visual-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--navy-950); }
+  .visual-card .vc-body { padding: 8px 10px; font-size: 0.71875rem; line-height: 1.45; }
+  .visual-card .vc-name { font-weight: 600; font-size: 0.75rem; word-break: break-all; }
+  .visual-card .vc-meta { color: var(--text-3); }
+  .visual-card button {
+    margin-top: 6px;
+    width: 100%;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .visual-card button:hover { border-color: var(--line-strong); color: var(--text); }
+  .voice-filters { display: flex; gap: 8px; padding: 10px 14px 0; flex-wrap: wrap; }
+  .voice-filters input {
+    flex: 1;
+    min-width: 140px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 0.78125rem;
+    padding: 6px 9px;
+  }
+  .voice-filters input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .voice-filters textarea {
+    flex: 1;
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    padding: 8px 10px;
+    resize: vertical;
+  }
+  .voice-filters textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .pager { display: flex; gap: 12px; align-items: center; padding: 0 14px 12px; font-size: 0.78125rem; color: var(--text-2); }
+  .pager[hidden] { display: none; }
+  .webhook-events { padding-bottom: 0; }
+  .webhook-events label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: unset;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-2);
+    cursor: pointer;
+  }
+  .webhook-events input[type="checkbox"] { accent-color: var(--accent); }
+  .launch-grid {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 12px 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .launch-grid button.run { width: 100%; }
+  .launch-grid p { margin: 2px 0 0; font-size: 0.875rem; color: var(--text-2); max-width: none; }
+  @media (max-width: 640px) {
+    .launch-grid { grid-template-columns: 1fr; }
+    .launch-grid p { margin-top: -6px; margin-bottom: 8px; }
+  }
+  .pager button:disabled { opacity: 0.35; cursor: default; }
+  .raw-wrap { margin: 0; padding: 0 14px 12px; }
+  pre.raw {
+    max-height: 320px;
+    overflow: auto;
+    background: var(--term-bg);
+    color: var(--term-text);
+    padding: 12px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.71875rem;
+    line-height: 1.5;
+    margin: 8px 0 0;
+  }
+  td button.mini {
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 1px 8px;
+    font-size: 0.6875rem;
+    cursor: pointer;
+  }
+  td button.mini:hover { color: var(--text); border-color: var(--line-strong); }
+  .explorer .ok { color: var(--ok); font-size: 0.875rem; font-weight: 600; }
+  .result-wrap { margin: 0; }
+  .result-wrap summary {
+    padding: 8px 14px;
+    font-size: 0.71875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+  }
+  .explorer-head input {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.78125rem;
+    padding: 5px 9px;
+    width: 130px;
+    margin-left: auto;
+  }
+  .explorer-head input + button.run { margin-left: 0; }
+  .explorer-head input[type="file"] {
+    margin-left: auto;
+    font-size: 0.71875rem;
+    color: var(--text-2);
+    max-width: 240px;
+  }
+  .explorer-head input[type="file"] + button.run { margin-left: 0; }
+  .explorer-head select {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.78125rem;
+    padding: 5px 8px;
+  }
+
+  /* ============ Head visual lightbox ============ */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 13, 19, 0.88);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px;
+  }
+  .lightbox[hidden] { display: none; }
+  .lb-stage { display: flex; flex-direction: column; gap: 12px; align-items: center; max-width: min(760px, 80vw); }
+  .lb-stage video {
+    max-height: 70vh;
+    max-width: 100%;
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  }
+  .lb-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
+  }
+  .lb-nav, .lb-close {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .lb-nav:hover, .lb-close:hover { background: rgba(255, 255, 255, 0.18); }
+  .lb-nav:focus-visible, .lb-close:focus-visible { outline: 2px solid #9ab7d0; outline-offset: 2px; }
+  .lb-close { position: absolute; top: 20px; right: 20px; font-size: 1.125rem; }
+  .visual-card img { cursor: zoom-in; }
+
+  /* ============ Conversation chat modal (Chapter 6) ============ */
+  .chat-modal {
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    width: min(560px, 92vw);
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  }
+  .chat-head {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.78125rem;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .chat-head strong { color: var(--text); font-size: 0.875rem; }
+  .chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-2);
+  }
+  .bub {
+    max-width: 78%;
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .bub.user {
+    align-self: flex-end;
+    background: var(--accent);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .bub.ai {
+    align-self: flex-start;
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+  }
+  .bub .bub-time { display: block; font-size: 0.625rem; opacity: 0.65; margin-top: 3px; font-family: var(--font-mono); }
+  .chat-modal .raw-wrap { padding: 8px 18px 12px; border-top: 1px solid var(--line); }
+  tr.conv-row { cursor: pointer; }
+  tr.conv-row:hover td { background: var(--chip-bg); }
+  .creds-bubble:focus-visible, .creds input:focus-visible { outline: 2px solid var(--accent); }
+  mark.fill {
+    background: var(--chip-bg);
+    color: var(--term-accent);
+    border-radius: 4px;
+    padding: 0 3px;
+  }
+  .term pre mark.fill { background: rgba(154, 183, 208, 0.16); }
+
+  @media (max-width: 860px) {
+    nav.rail { display: none; }
+    main { padding-top: 40px; }
+    .creds { width: calc(100vw - 32px); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+</style>
+</head>
+<body>
+
+<aside class="creds" id="creds" hidden>
+  <div class="creds-head">
+    <span>Session data</span>
+    <button id="creds-min" type="button" title="Minimize">minimize</button>
+  </div>
+  <div class="creds-body">
+    <label>Account email <input data-k="email" type="text" autocomplete="off" placeholder="you@company.com"></label>
+    <label>Secret key <input data-k="secretKey" type="password" autocomplete="off" placeholder="uuid from Manage Account"></label>
+    <label>Bearer token <input data-k="bearer" type="password" autocomplete="off" placeholder="eyJ… (from /auth/token)"></label>
+    <label>Org public id — embeds &amp; data API <input data-k="orgPublicId" type="text" autocomplete="off" placeholder="MyOrg-1234"></label>
+    <label>Org id — uuid <input data-k="orgId" type="text" autocomplete="off" placeholder="uuid (from /user/me)"></label>
+    <label>Org API key <input data-k="apiKey" type="password" autocomplete="off" placeholder="hex (from /user/me)"></label>
+    <label>Head public id — URLs &amp; embeds <input data-k="headId" type="text" autocomplete="off" placeholder="e.g. myassistant-12345"></label>
+    <label>Head uuid — management API <input data-k="headUuid" type="text" autocomplete="off" placeholder="uuid (from create response)"></label>
+    <label>Head visual id <input data-k="headVisualId" type="text" autocomplete="off" placeholder="from discovery"></label>
+    <label>Tunnel URL <input data-k="tunnelUrl" type="text" autocomplete="off" placeholder="https://… (Ch. 4)"></label>
+    <div class="creds-foot">
+      <span class="hint">Stored in this browser only</span>
+      <button id="creds-clear" type="button">Clear</button>
+    </div>
+  </div>
+</aside>
+<div class="lightbox" id="chatbox" hidden>
+  <button class="lb-close" id="cb-close" type="button" aria-label="Close">✕</button>
+  <div class="chat-modal">
+    <div class="chat-head" id="cb-meta"></div>
+    <div class="chat-body" id="cb-body"></div>
+    <details class="raw-wrap"><summary>Raw response</summary><pre class="raw" id="cb-raw"></pre></details>
+  </div>
+</div>
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-nav" id="lb-prev" type="button" aria-label="Previous face">‹</button>
+  <div class="lb-stage">
+    <video id="lb-video" autoplay loop muted playsinline></video>
+    <div class="lb-meta"><span id="lb-name"></span><button class="run" id="lb-use" type="button">Use this face</button></div>
+  </div>
+  <button class="lb-nav" id="lb-next" type="button" aria-label="Next face">›</button>
+</div>
+<button class="creds-bubble" id="creds-bubble" type="button" title="Session data"><img src="data:image/png;base64,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" alt=""> Session data</button>
+
+<div class="shell">
+  <nav class="rail" aria-label="Session chapters">
+    <div class="brand"><img class="logo" src="data:image/png;base64,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" alt="UNITH"><span>dev session</span></div>
+    <div class="session-len">Technical onboarding · ~90 min</div>
+    <a class="chapter-link" href="#ch1"><span class="num">1</span> Setup &amp; credentials <span class="mins">5'</span></a>
+    <a class="chapter-link" href="#ch2"><span class="num">2</span> Discovery: faces &amp; voices <span class="mins">10'</span></a>
+    <a class="chapter-link" href="#ch3"><span class="num">3</span> Create a digital human by API <span class="mins">15'</span></a>
+    <a class="chapter-link" href="#ch4"><span class="num">4</span> Plugin mode — your LLM <span class="mins">20'</span></a>
+    <a class="chapter-link" href="#ch5"><span class="num">5</span> Tools &amp; metadata in OC <span class="mins">10'</span></a>
+    <a class="chapter-link" href="#ch6"><span class="num">6</span> Webhooks &amp; conversation logs <span class="mins">10'</span></a>
+    <a class="chapter-link" href="#ch7"><span class="num">7</span> Embedding &amp; the SDK <span class="mins">10'</span></a>
+    <a class="chapter-link" href="#ch8"><span class="num">8</span> Custom avatars <span class="mins">10'</span></a>
+    <a class="chapter-link" href="#ch9"><span class="num">9</span> Ready to go live? <span class="mins">5'</span></a>
+  </nav>
+
+  <main>
+    <div class="content">
+      <header class="page-head">
+        <img class="logo" src="data:image/png;base64,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" alt="UNITH" style="height: 24px; margin-bottom: 20px;">
+        <div class="eyebrow">Technical onboarding guide</div>
+        <h1>Every step of the onboarding, ready to copy</h1>
+        <p class="lede">
+          A digital human created from zero by API, wired to a server you control,
+          speaking with the model you choose. Every command on this page is
+          copy-paste ready, and every section links to the official docs at
+          <a href="https://docs.unith.ai" target="_blank" rel="noopener">docs.unith.ai</a>.
+        </p>
+      </header>
+
+      <!-- ================= CHAPTER 1 ================= -->
+      <section class="chapter" id="ch1">
+        <div class="eyebrow">Chapter 1 <span class="mins">5 min</span></div>
+        <h2>Setup &amp; credentials</h2>
+        <p class="goal">One secret key is all the API needs. Generate it in interFace, exchange it for a 7-day bearer token.</p>
+        <ol>
+          <li>Open <a href="https://app.unith.ai" target="_blank" rel="noopener">interFace</a> → <strong>Manage Account</strong> → generate a secret key (shown once — store it safely).</li>
+          <li>Exchange it for a bearer token:</li>
+        </ol>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Get a bearer token</strong>
+            <button class="run" id="run-auth" type="button">Run POST /auth/token</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="auth-out"><span class="placeholder">Uses the email + secret key from the Session data panel; saves the bearer back into it.</span></div>
+          </details>
+          <details class="raw-wrap" id="auth-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="auth-raw"></pre></details>
+        </div>
+        <p><strong>What is a bearer token?</strong> A temporary pass for the API: whoever <em>bears</em> it is trusted, no password needed. You exchange your permanent secret key for this 7-day token and send it in the <code>Authorization</code> header of every call. When it expires, exchange again.</p>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl -X POST 'https://platform-api.unith.ai/auth/token' \
+  -H 'content-type: application/json' \
+  -d '{ "email": "you@company.com", "secretKey": "YOUR_SECRET_KEY" }'</pre>
+          </div>
+        </details>
+        <ol start="3">
+          <li>Now ask the API who you are — this fills your org ids and API key into the panel automatically:</li>
+        </ol>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Who am I?</strong>
+            <button class="run" id="run-me" type="button">Run GET /user/me</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="me-out"><span class="placeholder">Fills org public id, org id and org API key into the panel.</span></div>
+          </details>
+          <details class="raw-wrap" id="me-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="me-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl 'https://platform-api.unith.ai/user/me' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'</pre>
+          </div>
+        </details>
+        <div class="watch"><strong>About the demo repo:</strong> the small server you will see in Chapters 4–6 has ONE job — showing what the platform sends to your backend (plugin messages, tool calls, webhooks) and how you answer. All configuration happens right here on this page, or with the curl commands — how you build your own tooling afterwards is entirely up to you.</div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/user" target="_blank" rel="noopener">Authentication</a>
+          <a href="https://docs.unith.ai/getting-started" target="_blank" rel="noopener">Getting started</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 2 ================= -->
+      <section class="chapter" id="ch2">
+        <div class="eyebrow">Chapter 2 <span class="mins">10 min</span></div>
+        <h2>Discovery: faces and voices</h2>
+        <p class="goal">Before creating anything, ask the API what you have to build with: the head visuals (faces) available to your org, and 4,600+ voices across two providers, all filterable.</p>
+        <p>These calls run straight from this page against the live API, using the bearer from your Session data panel — and every one has its terminal equivalent:</p>
+
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Head visuals</strong>
+            <button class="run" id="run-visuals" type="button">Run GET /head_visual/face/all</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="visuals-out"><span class="placeholder">Not run yet — needs the bearer token in the panel.</span></div>
+          </details>
+          <details class="raw-wrap" id="visuals-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="visuals-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl 'https://platform-api.unith.ai/head_visual/face/all?order=ASC&amp;page=1&amp;take=50' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'</pre>
+          </div>
+        </details>
+
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Voices</strong>
+            <button class="run" id="run-voices" type="button">Run GET /voice/all</button>
+          </div>
+          <div class="voice-filters">
+            <input id="vf-language" type="text" placeholder="language — e.g. Spanish">
+            <input id="vf-gender" type="text" placeholder="gender — MALE / FEMALE">
+            <input id="vf-provider" type="text" placeholder="provider — azure / elevenlabs">
+            <input id="vf-name" type="text" placeholder="display name — partial ok">
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="voices-out"><span class="placeholder">Not run yet — needs the bearer token in the panel.</span></div>
+          </details>
+          <div class="pager" id="voices-pager" hidden>
+            <button id="voices-prev" type="button">‹ prev</button>
+            <span id="voices-meta"></span>
+            <button id="voices-next" type="button">next ›</button>
+          </div>
+          <details class="raw-wrap" id="voices-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="voices-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl 'https://platform-api.unith.ai/voice/all?order=ASC&amp;page=1&amp;take=50&amp;sortBy=displayName&amp;language=Spanish&amp;gender=FEMALE' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+<span class="c"># filters: language, accent, gender, languageCode, provider, displayName (partial), filterOutProvider</span></pre>
+          </div>
+        </details>
+
+        <div class="watch"><strong>Choosing a voice:</strong> we work with Azure and ElevenLabs. Prioritize speed-optimized models (ElevenLabs Flash/Turbo, Azure Turbo/HD Flash) — TTS time is response time. Avoid Azure HD Neural for interactive heads.</div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/voice-selection-guide-tts" target="_blank" rel="noopener">Voice selection guide</a>
+          <a href="https://docs.unith.ai/creating-head-visuals" target="_blank" rel="noopener">Head visuals</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 3 ================= -->
+      <section class="chapter" id="ch3">
+        <div class="eyebrow">Chapter 3 <span class="mins">15 min</span></div>
+        <h2>Create a digital human by API</h2>
+        <p class="goal">One POST request with the face and voice you just picked. Then refresh interFace: the head is there, live, ready to talk.</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Create it from this page</strong>
+            <input id="create-name" type="text" value="demo-oc" aria-label="Head name">
+            <button class="run" id="run-create" type="button">Run POST /head/create</button>
+          </div>
+          <div class="voice-filters">
+            <textarea id="create-prompt" rows="3" aria-label="System prompt">You are a friendly assistant created live during a UNITH technical demo. Keep answers short and conversational.</textarea>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="create-out"><span class="placeholder">Uses the face from the panel + the default voice; saves the new head id back into the panel.</span></div>
+          </details>
+          <details class="raw-wrap" id="create-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="create-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The raw API call behind it</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl -X POST 'https://platform-api.unith.ai/head/create' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{
+    "headVisualId": "HEAD_VISUAL_ID",
+    "name": "demo-oc",
+    "alias": "Demo Assistant",
+    "operationMode": "oc",
+    "promptConfig": { "system_prompt": "You are a friendly assistant. Keep answers short." },
+    "ttsProvider": "elevenlabs",
+    "ttsVoice": "Xb7hH8MSUJpSbSDYk0k2_eleven_turbo_v2_5",
+    "ocProvider": "playground",
+    "languageSpeechRecognition": "en-US",
+    "language": "en-US",
+    "greetings": "Hi! I was created live, thirty seconds ago.",
+    "videoStreaming": true
+  }'</pre>
+          </div>
+        </details>
+        <p>The response includes a <code>publicurl</code> — open it and say hello. Operation modes at a glance:</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Mode</th><th>What it does</th><th>In this guide</th></tr></thead>
+            <tbody>
+              <tr><td><code>oc</code></td><td>Open conversation driven by a system prompt + LLM</td><td>Chapters 2–3, 5</td></tr>
+              <tr><td><code>doc_qa</code></td><td>Answers only from your uploaded documents (PDF upload via interFace)</td><td>Not covered — ask UNITH</td></tr>
+              <tr><td><code>plugin</code></td><td>Your server owns the conversation — any LLM, any logic</td><td>Chapter 4</td></tr>
+              <tr><td><code>ttt</code></td><td>Speaks the exact text you send, verbatim</td><td>Not covered</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/create-a-digital-human" target="_blank" rel="noopener">Create a digital human</a>
+          <a href="https://docs.unith.ai/conversation-types" target="_blank" rel="noopener">Conversation types</a>
+          <a href="https://docs.unith.ai/open-dialogue-mode" target="_blank" rel="noopener">Open dialogue mode</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 3 · continued ================= -->
+      <section class="chapter" id="ch3b" style="border-top: none; padding-top: 8px; margin-top: 0;">
+        <h2 style="font-size: 1.25rem;">Now tune it live</h2>
+        <p class="goal">Everything you chose in that payload stays swappable by API after creation — the voice, and the LLM behind the conversation.</p>
+        <p><strong>Voices.</strong> Switching is one call — always update provider and voice together:</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Switch the voice from this page</strong>
+            <button class="run" id="run-voice-switch" type="button">Run PUT /head/update</button>
+          </div>
+          <div class="voice-filters">
+            <input id="sv-provider" type="text" placeholder="provider — azure / elevenlabs">
+            <input id="sv-voice" type="text" placeholder="voiceId — copy one in Chapter 2">
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="voice-switch-out"><span class="placeholder">Updates the head whose id is in the panel.</span></div>
+          </details>
+          <details class="raw-wrap" id="voice-switch-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="voice-switch-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · head id = the uuid</span><button class="copy">copy</button></div>
+            <pre>curl -X PUT 'https://platform-api.unith.ai/head/update' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "id": "HEAD_ID", "ttsProvider": "elevenlabs", "ttsVoice": "VOICE_ID" }'</pre>
+          </div>
+        </details>
+        <ul>
+          <li>Speed-optimized models first (ElevenLabs Flash/Turbo, Azure Turbo/HD Flash) — TTS time is response time.</li>
+          <li>Want your brand voice? Send us a clean audio sample and <strong>we clone it into your account</strong>.</li>
+          <li>Or build your own connector for special cases: <a href="https://github.com/unith-ai/voice-connector-template" target="_blank" rel="noopener">unith-ai/voice-connector-template</a> on GitHub.</li>
+        </ul>
+
+        <p><strong>The model behind OC heads.</strong> Swap the LLM provider and model with one call (OpenAI and Groq supported — Groq serves fast open-source small models):</p>
+        <details open>
+          <summary>From the terminal — GET first, then PUT</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · GET first, then PUT</span><button class="copy">copy</button></div>
+            <pre><span class="c"># 1. ALWAYS read the current settings first — the PUT REPLACES them:</span>
+curl 'https://platform-api.unith.ai/head/HEAD_ID/conversation-settings' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+
+<span class="c"># 2. Then write the new provider/model — the body goes WRAPPED in conversationSettings:</span>
+curl -X PUT 'https://platform-api.unith.ai/head/HEAD_ID/conversation-settings' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "conversationSettings": { "provider": "groq", "llmName": "llama-3.1-8b-instant", "apiKey": "YOUR_PROVIDER_KEY" } }'</pre>
+          </div>
+        </details>
+        <div class="watch"><strong>⚠️ Overwrite warning:</strong> the PUT replaces the head's WHOLE conversation settings object (provider, model, key, and the tools of Chapter 5) — always GET first, keep a copy, and merge your change over the existing settings.</div>
+        <div class="watch"><strong>Feel the difference:</strong> ask the head the same question before and after switching to a small model on Groq, and compare response times. Full model freedom — your own hosted model included — comes in Chapter 4.</div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/configuration-parameters" target="_blank" rel="noopener">Configuration parameters</a>
+          <a href="https://docs.unith.ai/voice-selection-guide-tts" target="_blank" rel="noopener">Voice selection guide</a>
+          <a href="https://docs.unith.ai/audio-cloning" target="_blank" rel="noopener">Audio cloning</a>
+          <a href="https://docs.unith.ai/advanced-conversational-settings-llm-provider-external-tools" target="_blank" rel="noopener">LLM provider settings</a>
+          <a href="https://docs.unith.ai/create-your-own-prompts" target="_blank" rel="noopener">Prompt design</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 4 ================= -->
+      <section class="chapter" id="ch4">
+        <div class="eyebrow">Chapter 4 <span class="mins">20 min · the core</span></div>
+        <h2>Plugin mode — bring your own LLM</h2>
+        <p class="goal">Your server becomes the brain. UNITH sends you every user message; whatever you return is what the digital human speaks. Your LLM, your SLM, your rules, your RAG — full control.</p>
+        <div class="term">
+          <div class="term-label"><span>terminal · your backend, in this order</span><button class="copy">copy</button></div>
+          <pre><span class="c"># 1. the demo backend server (zero dependencies — its only job is to SHOW</span>
+<span class="c">#    what arrives and how you answer):</span>
+npm start
+
+<span class="c"># 2. expose it — ngrok prints a public https URL:</span>
+ngrok http 3000
+
+<span class="c"># 3. copy that URL into the panel → Tunnel URL. The head must be created</span>
+<span class="c">#    ALREADY POINTING at it (next step).</span></pre>
+        </div>
+        <div class="watch"><strong>Order matters:</strong> the plugin head stores the endpoint URL at creation — get the tunnel up and the URL into <code>.env</code> / the panel <em>before</em> creating it. (If the tunnel URL changes later, update the head's <code>pluginOperationalModeConfig</code> with <code>PUT /head/update</code>.)</div>
+        <div class="watch"><strong>ngrok gotcha:</strong> the terminal panel truncates the Forwarding line at the window edge — easy to copy a broken URL (missing <code>.app</code>). Copy it from ngrok's web interface at <a href="http://127.0.0.1:4040" target="_blank" rel="noopener">127.0.0.1:4040</a> instead, and sanity-check with <code>curl TUNNEL_URL/health</code> before creating the head.</div>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Create the plugin head from this page</strong>
+            <input id="create-plugin-name" type="text" value="demo-plugin" aria-label="Head name">
+            <button class="run" id="run-create-plugin" type="button">Run POST /head/create</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="create-plugin-out"><span class="placeholder">Uses the Tunnel URL from the panel — the head is born already wired to your server.</span></div>
+          </details>
+          <details class="raw-wrap" id="create-plugin-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="create-plugin-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl -X POST 'https://platform-api.unith.ai/head/create' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{
+    "headVisualId": "HEAD_VISUAL_ID",
+    "name": "demo-plugin",
+    "alias": "Plugin Demo",
+    "operationMode": "plugin",
+    "pluginOperationalModeConfig": {
+      "name": "demo-local-server",
+      "url": "TUNNEL_URL/plugin",
+      "options": {}
+    },
+    "ttsProvider": "elevenlabs",
+    "ttsVoice": "Xb7hH8MSUJpSbSDYk0k2_eleven_turbo_v2_5",
+    "ocProvider": "playground",
+    "languageSpeechRecognition": "en-US",
+    "language": "en-US",
+    "greetings": "Hi! Everything I say from now on comes from a server YOU control.",
+    "videoStreaming": true
+  }'</pre>
+          </div>
+        </details>
+        <p>Now talk to the head and watch the server console:</p>
+        <ul>
+          <li>The full payload UNITH sends is printed on every turn — you see exactly what arrives.</li>
+          <li>The reply is generated <strong>on your machine</strong>. Swapping in your own model is one line of code.</li>
+          <li>Say <code>pricing</code> — a keyword trigger fires: flag a lead, call a CRM, alert a human. Anything.</li>
+        </ul>
+        <div class="watch"><strong>Latency is yours now:</strong> the handler logs its own processing time on every turn. Every millisecond your backend spends is added to the head's response time — keep the hot path fast.</div>
+        <details>
+          <summary>The plugin contract</summary>
+          <div class="term">
+            <div class="term-label"><span>request · platform → your server</span><button class="copy">copy</button></div>
+            <pre><span class="c">POST {your configured url}/conversation/{user_id}/message</span>
+[
+  {
+    "type": "text",
+    "payload": {
+      "type": "message",
+      "message": "hi",                     <span class="c">← the user's text</span>
+      "options": {},
+      "session_metadata": {
+        "session_id": "…", "user_id": "…", "username": "anonymous",
+        "public_head_id": "…", "public_org_id": "…",
+        "timestamp": "…",
+        "request_metadata": {
+          "essential": {
+            "origin_domain": "https://stream.unith.ai",
+            "device_info": { "device_type": "desktop", "browser_family": "chrome" },
+            "language_pref": "en-GB"
+          }
+        }
+      }
+    }
+  }
+]</pre>
+          </div>
+          <div class="term">
+            <div class="term-label"><span>response · your server → platform (payload.type is required)</span><button class="copy">copy</button></div>
+            <pre>[
+  {
+    "type": "text",
+    "payload": { "type": "message", "message": "whatever the head should SAY" }
+  }
+]</pre>
+          </div>
+        </details>
+        <div class="watch"><strong>Note the base URL behavior:</strong> the platform appends <code>/conversation/{user_id}/message</code> to the URL you configure in <code>pluginOperationalModeConfig.url</code> — your server must listen on that route, not on the base path.</div>
+
+        <p><strong>Own the replies.</strong> Everything the head says is decided in <code>server.js → handlePlugin()</code> — two decision points:</p>
+        <div class="term">
+          <div class="term-label"><span>server.js · where to edit</span><button class="copy">copy</button></div>
+          <pre><span class="c">// 1. TRIGGERS — keywords fire actions AND custom replies:</span>
+if (/\b(price|pricing|cost)\b/i.test(userText)) {
+  fireTrigger('pricing_intent', userText);   <span class="c">// → CRM, Slack alert, ticket…</span>
+  return reply('Great question. Our team tailors pricing to each use case…', started, asTraces);
+}
+
+<span class="c">// 2. THE DEFAULT ANSWER — this line IS the brain. Swap it for your model:</span>
+<span class="c">// const answer = await yourLLM(userText);   ← OpenAI, your own SLM, RAG…</span>
+const answer = `You said: "${userText}". …`;</pre>
+        </div>
+        <details>
+          <summary>Live-edit exercise: make it use the session metadata</summary>
+          <p>Replace the <code>const answer</code> line with this, restart (<code>Ctrl+C</code> → <code>npm start</code>), and talk again — the head will tell you what device you are on:</p>
+          <div class="term">
+            <div class="term-label"><span>server.js · paste over the answer line</span><button class="copy">copy</button></div>
+            <pre>const device = meta?.request_metadata?.essential?.device_info?.device_type ?? 'device';
+const answer = `I can see you are talking to me from a ${device}. Everything I know about you came through YOUR server.`;</pre>
+          </div>
+          <p>Every turn, the console shows the full round trip: the incoming payload, <code>💬 reply → "…"</code>, and the handler latency.</p>
+        </details>
+
+        <p><strong>Finale: plug in a real local SLM.</strong> The demo server ships ready to use a small language model running on your own machine (Qwen3.5-4B, open weights, via an OpenAI-compatible local server) — no cloud, no API key, the brain runs on your hardware:</p>
+        <div class="term">
+          <div class="term-label"><span>terminal · start the local model, then flip the switch</span><button class="copy">copy</button></div>
+          <pre><span class="c"># 1. serve the model locally (first run downloads ~2.3 GB):</span>
+uvx --from 'mlx-lm>=0.30' --python 3.12 mlx_lm.server \
+  --model mlx-community/Qwen3.5-4B-MLX-4bit --port 1234 \
+  --chat-template-args '{"enable_thinking": false}'
+
+<span class="c"># 2. in .env:  LOCAL_LLM=on   → restart the server (Ctrl+C, npm start)</span></pre>
+        </div>
+        <p>Talk to the head again: now every reply is generated by the local model, and the console prints its cost honestly — <code>🧠 local LLM answered in ~2700 ms — running on THIS machine</code>.</p>
+        <div class="watch"><strong>The latency trade-off:</strong> a 4B model on a laptop adds ~2–3 s per turn; the same model on a proper GPU (or a fast provider like Groq) adds a fraction of that. That trade-off — model size × hardware × latency — is now YOUR dial to turn. Note the triggers still fire before the LLM: rules where you need certainty, model where you need conversation.</div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/create-a-digital-human" target="_blank" rel="noopener">Plugin mode payload</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 5 ================= -->
+      <section class="chapter" id="ch5">
+        <div class="eyebrow">Chapter 5 <span class="mins">10 min</span></div>
+        <h2>The same power inside OC: tools &amp; metadata</h2>
+        <p class="goal">Keep UNITH's conversational engine and still call your systems mid-conversation — external tools with rich session metadata on every invocation.</p>
+        <p>The demo wires <strong>two tools</strong> and the prompt block that activates them, in one click:</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Wire the demo tools + prompt</strong>
+            <button class="run" id="run-tools" type="button">Run PUT ×2 (settings + prompt)</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="tools-out"><span class="placeholder">Declares check_policy_status + capture_lead pointing at your Tunnel URL, and installs the prompt block below on the head from the panel.</span></div>
+          </details>
+          <details class="raw-wrap" id="tools-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="tools-raw"></pre></details>
+        </div>
+        <div class="watch"><strong>⚠️ Tool parameters format:</strong> <code>parameters</code> is a <strong>list</strong> of <code>{ "name": "…", "description": "…" }</code> objects — not a JSON schema, not a plain map, and no field left unfilled. A malformed tool doesn't just fail the call: <strong>the head won't load at all</strong> (the NLP session throws on init).</div>
+        <p><strong>A tool is only half the feature — the prompt is the other half.</strong> The settings declare what the tool is; the system prompt tells the head <em>when</em> to call it:</p>
+        <div class="term">
+          <div class="term-label"><span>the prompt block that activates the tools</span><button class="copy">copy</button></div>
+          <pre>LEAD CAPTURE: your first goal is to learn the visitor's name, and after that
+their email address. Ask naturally, one thing at a time. <span class="a">The moment the user
+provides their email address, call the capture_lead tool</span> with the parameters
+name and email.
+POLICY QUESTIONS: if the user asks about their policy or its status, call the
+check_policy_status tool and answer with what it returns.
+TOOL RESULTS: <span class="a">after any tool responds, follow the instructions contained in the
+tool result faithfully.</span></pre>
+        </div>
+        <details>
+          <summary>The same calls from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · GET first, then PUT (wrapped, merged)</span><button class="copy">copy</button></div>
+            <pre><span class="c"># 1. read the current settings (the PUT replaces the whole object):</span>
+curl 'https://platform-api.unith.ai/head/HEAD_ID/conversation-settings' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+
+<span class="c"># 2. declare the tools — HTTP endpoints the head can call mid-conversation:</span>
+curl -X PUT 'https://platform-api.unith.ai/head/HEAD_ID/conversation-settings' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{
+    "conversationSettings": {
+      "tools": [
+        {
+          "name": "check_policy_status",
+          "description": "Check the status of the insurance policy of the current user",
+          "url": "TUNNEL_URL/tools/policy-status",
+          "parameters": [
+            { "name": "policy_holder", "description": "The full name of the policy holder" }
+          ]
+        },
+        {
+          "name": "capture_lead",
+          "description": "Save a new sales lead. Call this as soon as the user has provided their email address.",
+          "url": "TUNNEL_URL/tools/capture-lead",
+          "parameters": [
+            { "name": "name", "description": "The name of the user" },
+            { "name": "email", "description": "The email address of the user" }
+          ]
+        }
+      ]
+    }
+  }'
+
+<span class="c"># 3. install the prompt block that activates them (see below) — the tool</span>
+<span class="c">#    declaration alone is not enough:</span>
+curl -X PUT 'https://platform-api.unith.ai/head/update' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "id": "HEAD_ID", "promptConfig": { "system_prompt": "Prioritise natural, engaging speech cadence. You are the virtual assistant of Meridian Insurance in a live demo. Keep every answer short and conversational, one or two spoken sentences, no markdown. LEAD CAPTURE: your first goal is to learn the name of the visitor, and after that their email address. Ask naturally, one thing at a time. The moment the user provides their email address, call the capture_lead tool with the parameters name and email. POLICY QUESTIONS: if the user asks about their policy or its status, call the check_policy_status tool and answer with what it returns. TOOL RESULTS: after any tool responds, follow the instructions contained in the tool result faithfully." } }'</pre>
+          </div>
+        </details>
+        <details>
+          <summary>The tool call your server receives</summary>
+          <div class="term">
+            <div class="term-label"><span>request · platform → your tool endpoint</span><button class="copy">copy</button></div>
+            <pre><span class="c">POST {tool url}</span>
+{
+  "name": "Jane",                       <span class="c">← the parameters, extracted by the LLM</span>
+  "email": "jane@example.com",
+  "session_metadata": {
+    "session_id": "…", "user_id": "…", "username": "anonymous",
+    "public_head_id": "…", "public_org_id": "…", "timestamp": "…",
+    "request_metadata": { "essential": { "origin_domain": "…",
+      "device_info": { "device_type": "desktop", "browser_family": "chrome" },
+      "language_pref": "en-GB" } }
+  }
+}</pre>
+          </div>
+          <div class="term">
+            <div class="term-label"><span>response · your server → the head</span><button class="copy">copy</button></div>
+            <pre>{
+  "result": "Lead saved successfully. IMPORTANT: today is this user's birthday! Congratulate them warmly by name and wish them a great day."
+}</pre>
+          </div>
+          <p>Whatever you put in <code>result</code> is handed to the head's LLM as the tool outcome — data <em>and instructions</em>. That is how the birthday greeting works: the server talks back. (If your endpoint fails, the conversation survives — the head apologizes and retries gracefully.)</p>
+        </details>
+        <p><strong>Try it:</strong> the head asks your name, then your email. Type the email → <code>⚡ NEW LEAD</code> lands on the server (name + email, straight to your CRM). And the twist: the tool <em>response</em> tells the head it is your birthday — <strong>and the head congratulates you</strong>. Your server does not just receive data mid-conversation; <em>it can steer what the head says next</em>. Ask "can you check my policy status?" for the data-lookup tool. Every tool call automatically carries:</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Field</th><th>Use it for</th></tr></thead>
+            <tbody>
+              <tr><td><code>session_id</code>, <code>timestamp</code></td><td>Reconstruct and log full conversations</td></tr>
+              <tr><td><code>user_id</code>, <code>username</code></td><td>Identify who is talking (set via embed, Ch. 7)</td></tr>
+              <tr><td><code>origin</code>, <code>device_type</code>, <code>browser</code>, <code>language</code></td><td>Context-aware responses and analytics</td></tr>
+              <tr><td>custom parameters</td><td>Anything you configure — email, account tier, campaign</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="watch"><strong>Rule of thumb:</strong> plugin mode when you want to own the whole conversation; OC + tools when you want UNITH to drive and your systems to answer specific questions (CRM lookup, order status, availability).</div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/metadata-in-conversation-tools" target="_blank" rel="noopener">Metadata in tools</a>
+          <a href="https://docs.unith.ai/advanced-conversational-settings-llm-provider-external-tools" target="_blank" rel="noopener">External tools</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 6 ================= -->
+      <section class="chapter" id="ch6">
+        <div class="eyebrow">Chapter 6 <span class="mins">10 min</span></div>
+        <h2>Webhooks &amp; conversation logs</h2>
+        <p class="goal">Lifecycle events pushed to your server, HMAC-signed. When a conversation ends, fetch its transcript automatically — event-driven analytics.</p>
+        <p><strong>Step 1 — switch event delivery ON.</strong> A head sends no events until this is enabled, and enabling must happen <em>before</em> registering:</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Enable event delivery</strong>
+            <button class="run" id="run-enable-events" type="button">Run PUT /enable-events?enableEvents=true</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="enable-events-out"><span class="placeholder">Flips the delivery switch of the head in the panel, and reads it back.</span></div>
+          </details>
+          <details class="raw-wrap" id="enable-events-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="enable-events-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same calls from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · enable + check — note the QUERY param</span><button class="copy">copy</button></div>
+            <pre><span class="c"># enable — it is a QUERY PARAM (a JSON body here is silently ignored):</span>
+curl -X PUT 'https://platform-api.unith.ai/head/HEAD_ID/enable-events?enableEvents=true' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+
+<span class="c"># check the delivery switch (returns true / false):</span>
+curl 'https://platform-api.unith.ai/head/HEAD_ID/enable-events' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'</pre>
+          </div>
+        </details>
+
+        <p><strong>Step 2 — register your endpoint and pick the events.</strong> Default here: only <code>end_conversation</code>, the one that powers post-conversation analytics:</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Register the webhook</strong>
+            <button class="run" id="run-webhook" type="button">Run POST /head-events</button>
+          </div>
+          <div class="voice-filters webhook-events">
+            <label><input type="checkbox" id="ev-start"> start_conversation</label>
+            <label><input type="checkbox" id="ev-end" checked> end_conversation</label>
+            <label><input type="checkbox" id="ev-inactivity"> inactivity_warning</label>
+            <label><input type="checkbox" id="ev-timeout"> timeout_conversation</label>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="webhook-out"><span class="placeholder">Cleans stale registrations and registers TUNNEL_URL/webhooks/unith for the events you tick. Keep the shared key it returns.</span></div>
+          </details>
+          <details class="raw-wrap" id="webhook-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="webhook-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same calls from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · register / list / delete</span><button class="copy">copy</button></div>
+            <pre><span class="c"># register — set true only for the events you want; the response returns</span>
+<span class="c"># the sharedKey for HMAC verification.</span>
+<span class="c"># NOTE: posting again ADDS another registration (it does not update):</span>
+curl -X POST 'https://platform-api.unith.ai/head-events' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{
+    "headId": "HEAD_ID",
+    "webhookUrl": "TUNNEL_URL/webhooks/unith",
+    "startConversation": false,
+    "endConversation": true,
+    "timeoutConversation": false,
+    "inactivityWarning": false
+  }'
+
+<span class="c"># list the registrations of a head (includes each sharedKey):</span>
+curl 'https://platform-api.unith.ai/head-events?headId=HEAD_ID' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+
+<span class="c"># remove one by its id (from the list above):</span>
+curl -X DELETE 'https://platform-api.unith.ai/head-events/REGISTRATION_ID' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'</pre>
+          </div>
+        </details>
+        <details>
+          <summary>The event your server receives</summary>
+          <div class="term">
+            <div class="term-label"><span>delivery · platform → your webhook URL</span><button class="copy">copy</button></div>
+            <pre><span class="c">POST {your webhook url}</span>
+<span class="c">X-Signature-256: d462a939f5…   ← HMAC SHA-256 of the raw body, keyed with your sharedKey</span>
+{
+  "timestamp": "2026-08-31 06:56:30",
+  "event_type": "start_conversation",     <span class="c">← or end_conversation / inactivity_warning / timeout_conversation</span>
+  "head_id": "1069ba44-…",                <span class="c">← uuid</span>
+  "public_head_id": "myassistant-12345",
+  "public_org_id": "MyOrg-1234",
+  "session_id": "67255481-…"              <span class="c">← feed this to the sessions endpoint for the transcript</span>
+}</pre>
+          </div>
+          <p><code>end_conversation</code> fires when the user closes the session — the demo server reacts by fetching that session's transcript automatically: event-driven analytics with ~10 lines of code.</p>
+        </details>
+        <p>Events: <code>start_conversation</code>, <code>end_conversation</code>, <code>inactivity_warning</code>, <code>timeout_conversation</code>. Every delivery is signed (<code>x-signature-256</code>, HMAC SHA-256) — the demo server verifies it before trusting anything.</p>
+        <p>Now end a conversation and watch the console: the event arrives, and the server fetches the full transcript from the data API on its own.</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Browse the conversations</strong>
+            <button class="run" id="run-logs" type="button">Run GET /conversations · via your backend</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="logs-out"><span class="placeholder">Lists ALL the org's conversations — click one to read it as a chat.</span></div>
+          </details>
+          <div class="pager" id="logs-pager" hidden>
+            <button id="logs-prev" type="button">‹ prev</button>
+            <span id="logs-meta"></span>
+            <button id="logs-next" type="button">next ›</button>
+          </div>
+          <details class="raw-wrap" id="logs-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="logs-raw"></pre></details>
+        </div>
+        <div class="watch"><strong>Why "via your backend"?</strong> the data API deliberately accepts no browser calls (no CORS) — logs are backend material. This button asks the demo server's <code>/logs/*</code> routes, and the server forwards to <code>api.data.unith.ai</code> with its own bearer. Uses the panel's Tunnel URL, or <code>localhost:3000</code> if empty.</div>
+        <div class="term">
+          <div class="term-label"><span>terminal · data API — org PUBLIC id, not the uuid</span><button class="copy">copy</button></div>
+            <pre><span class="c"># conversations in a date range (filters: head_id, username, data_tag):</span>
+curl 'https://api.data.unith.ai/conversations?org_id=YOUR_ORG&start_date=2023-01-01T00:00:00Z&end_date=2026-12-31T23:59:59Z' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+
+<span class="c"># full transcript of one session:</span>
+curl 'https://api.data.unith.ai/sessions/YOUR_ORG/SESSION_ID' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'</pre>
+          </div>
+        <p>Filter by <code>head_id</code>, <code>username</code>, or <code>data_tag</code> — sentiment analysis, lead scoring, QA review, CRM sync all start here. Note the data API uses the org <strong>public id</strong> (e.g. <code>MyOrg-1234</code>), not the uuid.</p>
+        <div class="docs">
+          <a href="https://docs.unith.ai/webhook-api-for-digital-human-events" target="_blank" rel="noopener">Webhook API</a>
+          <a href="https://docs.unith.ai/conversation-logs-retrieval" target="_blank" rel="noopener">Conversation logs</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 7 ================= -->
+      <section class="chapter" id="ch7">
+        <div class="eyebrow">Chapter 7 <span class="mins">10 min</span></div>
+        <h2>Embedding &amp; the SDK</h2>
+        <p class="goal">Four ways into your product — from a one-line embed to full programmatic control of every message.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Best for</th></tr></thead>
+            <tbody>
+              <tr><td>Iframe / public URL</td><td>Quickest possible embed</td></tr>
+              <tr><td><code>&lt;unith-widget&gt;</code> web component</td><td>Zero-build floating widget</td></tr>
+              <tr><td><code>@unith-ai/core-client</code></td><td>Any JS/TS app, full control</td></tr>
+              <tr><td><code>@unith-ai/react</code></td><td>React / Next.js</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>All the demos below open in a new tab, prefilled from your panel — start the demo sites first: <code>npm run site</code>.</p>
+
+        <h2 style="font-size: 1.25rem; margin-top: 32px;">Part 1 — the one-tag embeds</h2>
+        <div class="launch-grid">
+          <button class="run" id="open-embedded" type="button">Your site, widget embedded ↗</button>
+          <p>A real website with the digital human already living in it, plus a "How this works" section showing the exact six-line snippet that powers it.</p>
+          <button class="run" id="open-iframe" type="button">Same site, iframe embed ↗</button>
+          <p>The same site embedded with a single <code>&lt;iframe&gt;</code> — the quickest possible integration, with its own "How this works".</p>
+          <button class="run" id="open-blank-site" type="button">Blank site — paste it live ↗</button>
+          <p>The site with an empty, marked slot: copy the snippet below, paste it into the HTML, save, refresh — and watch the head appear. That is the whole integration.</p>
+        </div>
+        <p><strong>The widget snippet</strong> (prefilled from your panel):</p>
+        <div class="term">
+          <div class="term-label"><span>html · the entire integration</span><button class="copy">copy</button></div>
+          <pre>&lt;script src="https://embedded-stream.unith.ai/index.js" defer&gt;&lt;/script&gt;
+&lt;unith-widget
+  org_id="YOUR_ORG" head_id="YOUR_HEAD" api_key="YOUR_KEY"
+  username="demo-visitor"
+  tag="onboarding-session"&gt;
+&lt;/unith-widget&gt;</pre>
+        </div>
+        <div class="watch"><strong>Details that matter:</strong> attribute names use underscores (<code>org_id</code>, not <code>org-id</code>); the container needs an explicit height; microphone requires HTTPS (or localhost) and Chrome. <code>username</code> and <code>tag</code> are the values you filter conversation logs by (Ch. 6).</div>
+        <p><strong>The quickest path — one iframe:</strong></p>
+        <div class="term">
+          <div class="term-label"><span>html · iframe embed</span><button class="copy">copy</button></div>
+          <pre>&lt;iframe
+  src="https://stream.unith.ai/YOUR_ORG/YOUR_HEAD?api_key=YOUR_KEY"
+  width="100%" height="420"
+  allow="microphone"&gt;
+&lt;/iframe&gt;</pre>
+        </div>
+        <h2 style="font-size: 1.25rem; margin-top: 32px;">Part 2 — the SDK: full frontend control</h2>
+        <p>With the SDK (<a href="https://www.npmjs.com/package/@unith-ai/core-client" target="_blank" rel="noopener">@unith-ai/core-client</a>, v3) you sit between the user and the head — a turn-based session whose whole state is exposed as <strong>observables</strong>, rendered into any element you own. This is the core of it:</p>
+        <div class="term">
+          <div class="term-label"><span>typescript · @unith-ai/core-client v3</span><button class="copy">copy</button></div>
+          <pre>import { Session } from '@unith-ai/core-client';
+
+<span class="c">// 1. Connect and render the idle avatar (the element needs width + height):</span>
+const session = await Session.startDigitalHuman(
+  document.getElementById('avatar'),
+  { orgId: 'YOUR_ORG', headId: 'YOUR_HEAD', apiKey: 'YOUR_KEY' },
+);
+
+<span class="c">// 2. Everything is an observable — subscribe to what you care about:</span>
+session.turn.subscribe((t) =&gt; console.log(t.state));  <span class="c">// idle | thinking | ai-speaking | interrupting</span>
+session.messages.subscribe(renderTranscript);          <span class="c">// the full transcript, on every change</span>
+session.caption.subscribe(showCaption);                <span class="c">// text as the avatar speaks</span>
+
+<span class="c">// 3. Playback MUST start from a user gesture (browsers block auto-audio):</span>
+startButton.onclick = () =&gt; session.startSession();
+
+<span class="c">// 4. Drive it: send messages (only while turn is idle), interrupt, control:</span>
+session.sendMessage('The user just opened the pricing page.');
+session.stopResponse();      <span class="c">// barge-in interrupt</span>
+session.toggleMute();  session.toggleCaptions();  session.toggleMicrophone();
+await session.endSession();  <span class="c">// clean teardown</span></pre>
+        </div>
+        <div class="watch"><strong>The gesture rule:</strong> <code>startDigitalHuman()</code> connects and shows the idle avatar; <code>startSession()</code> begins audio/video and must run inside a click — otherwise the head loads but never speaks. Every demo below has a ▶ Start button for exactly this reason.</div>
+        <p><strong>See the SDK in action</strong> — first the playground, then three layouts that prove the frontend is entirely yours:</p>
+        <div class="launch-grid">
+          <button class="run" id="open-playground" type="button">SDK playground ↗</button>
+          <p>The full API surface, live: state chips (connection · turn · mic · muted · captions), transcript, event log of every observable, interrupt, mute, captions, microphone, timeout rescue, teardown. <strong>Hover any control — every button explains itself.</strong></p>
+          <button class="run" id="open-floating" type="button">Layout 1: floating bubble ↗</button>
+          <p>The head as a circle you can <strong>drag anywhere</strong> on the screen. Collapsed it shows the idle preview without opening a connection; click it and it expands, connects and talks.</p>
+          <button class="run" id="open-hero" type="button">Layout 2: hero concierge ↗</button>
+          <p>The head <strong>as the page</strong>: fullscreen video with the UI overlaid on top — brand, live turn indicator, cinematic captions and a floating input.</p>
+          <button class="run" id="open-tour" type="button">Layout 3: scroll tour ↗</button>
+          <p>The page <strong>drives the conversation</strong>: as you scroll, each section sends context and the head narrates what you are looking at. Any UI event — scroll, click, form — can talk to the head.</p>
+        </div>
+        <div class="watch"><strong>⚠️ Careful with the concurrency limit:</strong> every open conversation holds a slot, and a developer account has <strong>3 concurrent slots</strong> — three users talking at once, and every open tab counts. Over the limit, sessions are refused or dropped (the SDK reports it as a disconnect with reason <code>concurrency_limit_reached</code>, and these demos show a warning) — so if a head goes quiet while you test in several tabs, close one. Concurrency is a main driver of pricing, and the right size depends on your use case. To size yours: <a href="mailto:sales@unith.ai">sales@unith.ai</a>.</div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/unith-embed-integration-guide" target="_blank" rel="noopener">Embed integration guide</a>
+          <a href="https://docs.unith.ai/embedding-streaming-digital-humans-default" target="_blank" rel="noopener">Streaming embeds</a>
+          <a href="https://docs.unith.ai/managing-allowed-origins-for-digital-humans" target="_blank" rel="noopener">Allowed origins</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 8 ================= -->
+      <section class="chapter" id="ch8">
+        <div class="eyebrow">Chapter 8 <span class="mins">10 min</span></div>
+        <h2>Custom avatars — your own head visuals</h2>
+        <p class="goal">The face is an asset you can create: a short video becomes a head visual, and any head can wear it.</p>
+        <p>Guidelines: MP4, 1280×720 @ 25 fps, short (≈10 s) and light (a few MB), first and last frames matching (it loops). Two modes: a single idle loop, or an <strong>expressive state</strong> (idle + expressive movement, split at <code>cut_timestamp</code>).</p>
+        <p><strong>Step 1 — upload the video.</strong> Pick the MP4, check it in the preview, and upload. No suitable footage? The kit includes two proven samples: <code>sample-avatar.mp4</code> (a calm idle loop) and <code>sample-avatar-expressive.mp4</code> (3 s of calm idle, then expressive movement — made for the expressive state below). The platform returns a <em>temporary token</em> that identifies the uploaded file for the next step:</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Upload the video</strong>
+            <input type="file" id="hv-file" accept="video/mp4" aria-label="Avatar video file">
+            <button class="run" id="run-hv-upload" type="button" disabled>Run POST /video/upload</button>
+          </div>
+          <div class="explorer-body" id="hv-preview-box" hidden>
+            <video id="hv-preview" controls muted loop playsinline style="max-width: 320px; border-radius: 10px; display: block;"></video>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="hv-upload-out"><span class="placeholder">Choose an MP4 above — you will see it here before uploading.</span></div>
+          </details>
+          <details class="raw-wrap" id="hv-upload-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="hv-upload-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · multipart upload</span><button class="copy">copy</button></div>
+            <pre>curl -X POST 'https://platform-api.unith.ai/video/upload' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -F 'file=@./your-avatar.mp4'</pre>
+          </div>
+        </details>
+
+        <p><strong>Step 2 — create the visual.</strong> This starts the processing job (face detection, loop preparation). The upload token travels in a header, and there are two flavours: a <strong>single idle loop</strong> (the default), or an <strong>expressive state</strong> — the visual has a calm idle AND a livelier state the head switches to while speaking. Every body field is optional; these are the defaults for the single loop:</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Parameter</th><th>Value</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>x-head-video-token-id</code></td><td><em>header</em></td><td>The token from step 1 — which uploaded file to process</td></tr>
+              <tr><td><code>update</code></td><td><code>false</code></td><td><code>false</code> = new visual; <code>true</code> = reprocess an existing one</td></tr>
+              <tr><td><code>detector_version</code></td><td><code>v2</code></td><td>Face-detector generation — v2 is the recommended one</td></tr>
+              <tr><td><code>detector_threshold</code></td><td><code>0.2</code></td><td>Face-detection confidence: lower accepts harder shots, higher is stricter</td></tr>
+              <tr><td><code>mode</code></td><td><code>default</code></td><td><code>default</code> = one idle loop; <code>two_loops</code> = idle + active states</td></tr>
+              <tr><td><code>cut_timestamp</code></td><td><code>0.1</code></td><td>Two-loops only: the second (in the video) where idle switches to active</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <details>
+          <summary>The expressive-state preset (what changes and why)</summary>
+          <div class="term">
+            <div class="term-label"><span>body · idle + expressive state</span><button class="copy">copy</button></div>
+            <pre>{
+  "update": false,
+  "detector_version": "v2",
+  "detector_threshold": -0.2,        <span class="c">← more permissive: expressive footage moves more</span>
+  "mode": "two_loops_streaming",     <span class="c">← the expressive-state mode</span>
+  "cut_timestamp": 3.0,              <span class="c">← the second where calm idle ends and expression begins</span>
+  "template_zoom_factor": 1.05,      <span class="c">← slight zoom for framing consistency between states</span>
+  "mask_diameter_scale": 1.05,       <span class="c">← blending mask tuning (size, position, softness)</span>
+  "mask_offset_factor": 0.02,
+  "mask_sigma": 0.8,
+  "debug": false
+}</pre>
+          </div>
+          <p>Your footage must match <code>cut_timestamp</code>: calm, loopable idle up to that second, expressive movement after it. The included <code>sample-avatar-expressive.mp4</code> is cut at exactly 3.0 s.</p>
+        </details>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Create the visual</strong>
+            <select id="hv-mode" aria-label="Visual mode">
+              <option value="default">single idle loop</option>
+              <option value="expressive">idle + expressive state</option>
+            </select>
+            <button class="run" id="run-hv-create" type="button" disabled>Run POST /head_visual/create</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="hv-create-out"><span class="placeholder">Needs the upload token from step 1. Returns the new visual id and starts processing.</span></div>
+          </details>
+          <details class="raw-wrap" id="hv-create-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="hv-create-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · token goes in a header</span><button class="copy">copy</button></div>
+            <pre><span class="c"># single idle loop (the defaults):</span>
+curl -X POST 'https://platform-api.unith.ai/head_visual/create' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'x-head-video-token-id: VIDEO_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "update": false, "detector_version": "v2", "detector_threshold": 0.2,
+        "mode": "default", "cut_timestamp": 0.1, "debug": false }'
+
+<span class="c"># idle + expressive state (footage cut at 3.0 s, like the included sample):</span>
+curl -X POST 'https://platform-api.unith.ai/head_visual/create' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'x-head-video-token-id: VIDEO_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "update": false, "detector_version": "v2", "detector_threshold": -0.2,
+        "mode": "two_loops_streaming", "cut_timestamp": 3.0,
+        "template_zoom_factor": 1.05, "mask_diameter_scale": 1.05,
+        "mask_offset_factor": 0.02, "mask_sigma": 0.8, "debug": false }'</pre>
+          </div>
+        </details>
+
+        <p><strong>Step 3 — save it to your catalogue</strong> with a name and gender (gender also picks the demo voice in step 4):</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Save the visual</strong>
+            <input type="text" id="hv-name" value="my-custom-visual" aria-label="Visual name">
+            <select id="hv-gender" aria-label="Gender">
+              <option value="female">female</option>
+              <option value="male">male</option>
+            </select>
+            <button class="run" id="run-hv-save" type="button" disabled>Run POST /head_visual/save</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="hv-save-out"><span class="placeholder">Needs the visual id from step 2. After this, the visual belongs to your org catalogue.</span></div>
+          </details>
+          <details class="raw-wrap" id="hv-save-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="hv-save-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal</span><button class="copy">copy</button></div>
+            <pre>curl -X POST 'https://platform-api.unith.ai/head_visual/save' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "id": "NEW_VISUAL_ID", "name": "our-brand-avatar", "gender": "FEMALE", "type": "TALK" }'</pre>
+          </div>
+        </details>
+
+        <p><strong>Step 4 — see the result and give it life.</strong> Processing takes a while; check until the visual is COMPLETE, watch its idle loop, and create a digital human wearing it (same OC creation as Chapter 3, only the face — and a gender-matched voice — change):</p>
+        <div class="explorer">
+          <div class="explorer-head">
+            <strong>Check the result</strong>
+            <button class="run" id="run-hv-check" type="button" disabled>Run GET /head_visual/{id}</button>
+          </div>
+          <details class="result-wrap" open><summary>Result</summary>
+            <div class="explorer-body" id="hv-check-out"><span class="placeholder">Fetches the visual by id; when COMPLETE, its idle loop appears here with a create button.</span></div>
+          </details>
+          <details class="raw-wrap" id="hv-check-raw-wrap" hidden><summary>Raw response</summary><pre class="raw" id="hv-check-raw"></pre></details>
+        </div>
+        <details>
+          <summary>The same call from the terminal</summary>
+          <div class="term">
+            <div class="term-label"><span>terminal · status + urls of one visual</span><button class="copy">copy</button></div>
+            <pre><span class="c"># processing status (works before saving) — task_id comes from step 2:</span>
+curl 'https://platform-api.unith.ai/task/TASK_ID' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'
+
+<span class="c"># the saved visual, with status and video urls:</span>
+curl 'https://platform-api.unith.ai/head_visual/NEW_VISUAL_ID' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN'</pre>
+          </div>
+        </details>
+        <p>A visual can also be assigned to any EXISTING head — one visual, many heads:</p>
+        <div class="term">
+          <div class="term-label"><span>terminal · assign to an existing head (uuid)</span><button class="copy">copy</button></div>
+          <pre>curl -X PUT 'https://platform-api.unith.ai/head/assign-visual' \
+  -H 'authorization: Bearer YOUR_BEARER_TOKEN' \
+  -H 'content-type: application/json' \
+  -d '{ "id": "HEAD_ID", "headVisualId": "NEW_VISUAL_ID" }'</pre>
+        </div>
+        <div class="docs">
+          <a href="https://docs.unith.ai/creating-head-visuals" target="_blank" rel="noopener">Creating head visuals</a>
+          <a href="https://docs.unith.ai/video-guidelines-for-avatar-creation" target="_blank" rel="noopener">Video guidelines</a>
+        </div>
+      </section>
+
+      <!-- ================= CHAPTER 9 ================= -->
+      <section class="chapter" id="ch9" style="border-top: none; padding-top: 24px;">
+        <div class="bridge">
+          <div class="eyebrow">Chapter 9 · Where this goes</div>
+          <h2>Ready to go live?</h2>
+          <p>
+            Everything in this guide — heads created by API, your backend in the
+            loop, your face, your voice, your frontend — is what we build
+            together. We run it in three phases:
+          </p>
+          <div class="phases">
+            <div class="phase">
+              <div class="phase-num">1</div>
+              <h3>Test</h3>
+              <p>A scoped pilot with <strong>clear objectives agreed up front</strong>. We validate your use case on real conversations, together.</p>
+            </div>
+            <div class="phase-arrow">→</div>
+            <div class="phase">
+              <div class="phase-num">2</div>
+              <h3>Build</h3>
+              <p>Integration into your product: architecture, prompts, voices, custom visuals. Our engineers work alongside yours.</p>
+            </div>
+            <div class="phase-arrow">→</div>
+            <div class="phase">
+              <div class="phase-num">3</div>
+              <h3>Production</h3>
+              <p>Launch, monitoring and iteration — analytics, logs and webhooks feeding your systems from day one.</p>
+            </div>
+          </div>
+          <p>
+            The single biggest success factor is <strong>knowing what you want each
+            phase to achieve</strong> — and that is exactly where we help: defining
+            the objectives with you and supporting every step, so each phase ends
+            in a clear, satisfying yes.
+          </p>
+          <p class="bridge-contact">
+            <strong>Contact us!</strong>&ensp;
+            <a href="mailto:sales@unith.ai">sales@unith.ai</a> — projects, pilots and pricing&ensp;·&ensp;
+            <a href="mailto:support@unith.ai">support@unith.ai</a> — technical questions, anytime
+          </p>
+        </div>
+      </section>
+
+      <footer class="page-foot">
+        <img class="logo" src="data:image/png;base64,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" alt="UNITH" style="height: 14px; margin-bottom: 10px;">
+        UNITH Developer Kit · Official documentation:
+        <a href="https://docs.unith.ai" target="_blank" rel="noopener">docs.unith.ai</a>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  // Copy buttons — copy the sibling <pre>, stripping comment-only decoration.
+  document.querySelectorAll('.term').forEach((term) => {
+    const btn = term.querySelector('button.copy');
+    const pre = term.querySelector('pre');
+    if (!btn || !pre) return;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pre.innerText);
+        btn.textContent = 'copied';
+        setTimeout(() => { btn.textContent = 'copy'; }, 1500);
+      } catch {
+        btn.textContent = 'select + ⌘C';
+        setTimeout(() => { btn.textContent = 'copy'; }, 2000);
+      }
+    });
+  });
+
+  // Scrollspy — highlight the chapter currently in view.
+  const links = [...document.querySelectorAll('.rail a.chapter-link')];
+  const sections = links
+    .map((a) => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(Boolean);
+  const spy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px' },
+  );
+  sections.forEach((s) => spy.observe(s));
+
+  // ── Session data panel ─────────────────────────────────────────────────────
+  // Values live in THIS browser's localStorage only — the page makes no network
+  // requests. They are substituted into every code block so copy-paste is ready.
+  const STORE = 'unith-onboarding-session-data';
+  const PANEL_STATE = 'unith-onboarding-panel-min';
+  const TOKENS = [
+    ['you@company.com', 'email'],
+    ['YOUR_SECRET_KEY', 'secretKey'],
+    ['YOUR_BEARER_TOKEN', 'bearer'],
+    ['YOUR_ORG', 'orgPublicId'],
+    ['YOUR_HEAD', 'headId'],
+    ['HEAD_ID', 'headUuid'],
+    ['YOUR_KEY', 'apiKey'],
+    ['HEAD_VISUAL_ID', 'headVisualId'],
+    ['TUNNEL_URL', 'tunnelUrl'],
+  ];
+  const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const panel = document.getElementById('creds');
+  const bubble = document.getElementById('creds-bubble');
+  const inputs = [...panel.querySelectorAll('input[data-k]')];
+  let data = {};
+  try { data = JSON.parse(localStorage.getItem(STORE) ?? '{}'); } catch {}
+
+  function render() {
+    document.querySelectorAll('.term pre').forEach((pre) => {
+      if (!pre.dataset.tpl) pre.dataset.tpl = pre.innerHTML;
+      let html = pre.dataset.tpl;
+      for (const [token, key] of TOKENS) {
+        const val = (data[key] ?? '').trim();
+        if (val) html = html.replaceAll(token, `<mark class="fill">${esc(val)}</mark>`);
+      }
+      pre.innerHTML = html;
+    });
+    inputs.forEach((i) => i.classList.toggle('set', Boolean((data[i.dataset.k] ?? '').trim())));
+  }
+
+  inputs.forEach((input) => {
+    input.value = data[input.dataset.k] ?? '';
+    input.addEventListener('input', () => {
+      data[input.dataset.k] = input.value;
+      localStorage.setItem(STORE, JSON.stringify(data));
+      render();
+    });
+  });
+
+  document.getElementById('creds-clear').addEventListener('click', () => {
+    if (!confirm('Clear all session data from this browser?')) return;
+    data = {};
+    localStorage.removeItem(STORE);
+    inputs.forEach((i) => { i.value = ''; });
+    render();
+  });
+
+  const setMin = (min) => {
+    panel.hidden = min;
+    bubble.hidden = !min;
+    localStorage.setItem(PANEL_STATE, min ? '1' : '0');
+  };
+  document.getElementById('creds-min').addEventListener('click', () => setMin(true));
+  bubble.addEventListener('click', () => setMin(false));
+  setMin(localStorage.getItem(PANEL_STATE) === '1');
+  render();
+
+  // ── Live API explorer (Chapter 2) ──────────────────────────────────────────
+  // Calls go directly from this page to platform-api.unith.ai over HTTPS with
+  // the bearer from the panel. If the browser reports "Failed to fetch", the
+  // API likely blocks cross-origin calls — use the curl / npm versions instead.
+  const API = 'https://platform-api.unith.ai';
+
+  async function liveApi(method, path, body, attempt = 1) {
+    const bearer = (data.bearer ?? '').trim();
+    if (!bearer) throw new Error('Set the bearer token in the Session data panel first (Chapter 1).');
+    let res;
+    try {
+      res = await fetch(API + path, {
+        method,
+        headers: {
+          authorization: `Bearer ${bearer}`,
+          ...(body !== undefined && { 'content-type': 'application/json' }),
+        },
+        body: body === undefined ? undefined : JSON.stringify(body),
+      });
+    } catch (err) {
+      // Transient network blip (gateway hiccups surface as "Failed to fetch"):
+      // retry once before giving up.
+      if (attempt < 2) {
+        await new Promise((r) => setTimeout(r, 800));
+        return liveApi(method, path, body, attempt + 1);
+      }
+      throw err;
+    }
+    const text = await res.text();
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${text.slice(0, 300)}`);
+    return text ? JSON.parse(text) : {};
+  }
+  const liveGet = (path) => liveApi('GET', path);
+
+  function setField(key, val) {
+    data[key] = val;
+    localStorage.setItem(STORE, JSON.stringify(data));
+    const input = inputs.find((i) => i.dataset.k === key);
+    if (input) input.value = val;
+    render();
+  }
+
+  // Generic runner: button → loading → raw JSON + treated HTML (both collapsible).
+  function wireRunner(btnId, outId, rawId, fn) {
+    document.getElementById(btnId).addEventListener('click', async () => {
+      const out = document.getElementById(outId);
+      out.innerHTML = '<span class="placeholder">Loading…</span>';
+      try {
+        const { json, html, after } = await fn();
+        document.getElementById(rawId).textContent = JSON.stringify(json, null, 2);
+        document.getElementById(rawId + '-wrap').hidden = false;
+        out.innerHTML = html;
+        after?.(out);
+      } catch (err) { showError(out, err); }
+    });
+  }
+
+  // Chapter 1 — bearer token (no auth needed; email + secret key from panel)
+  wireRunner('run-auth', 'auth-out', 'auth-raw', async () => {
+    const email = (data.email ?? '').trim();
+    const sk = (data.secretKey ?? '').trim();
+    if (!email || !sk) throw new Error('Fill account email and secret key in the Session data panel first.');
+    const res = await fetch(`${API}/auth/token`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email, secretKey: sk, secretkey: sk }),
+    });
+    const text = await res.text();
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${text.slice(0, 300)}`);
+    const json = JSON.parse(text);
+    setField('bearer', json.data.bearer);
+    return {
+      json,
+      html: '<span class="ok">✓ Bearer obtained and saved to the Session data panel — valid 7 days.</span>',
+    };
+  });
+
+  // Chapter 1 — who am I (auto-fills org fields)
+  wireRunner('run-me', 'me-out', 'me-raw', async () => {
+    const json = await liveGet('/user/me');
+    const org = json.organisation ?? {};
+    if (org.publicId) setField('orgPublicId', org.publicId);
+    if (org.id) setField('orgId', org.id);
+    if (org.apiKey) setField('apiKey', org.apiKey);
+    const html = `<span class="ok">✓ Panel filled: org public id, org id, org API key.</span>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Field</th><th>Value</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr><td>Org public id</td><td><code>${esc(org.publicId ?? '')}</code></td><td>Identifies your org publicly — used in embeds, stream URLs and the data API</td></tr>
+          <tr><td>Org id (uuid)</td><td><code>${esc(org.id ?? '')}</code></td><td>Internal identifier of the org in the platform API</td></tr>
+          <tr><td>Org API key</td><td><code>${esc(org.apiKey ?? '')}</code></td><td>Goes in embed snippets as <code>api_key</code> (Chapter 7)</td></tr>
+          <tr><td>Plan</td><td><code>${esc(org.subscriptionType ?? '')}</code> · ${esc(String(org.slots ?? '?'))} slots</td><td>Subscription tier and how many digital humans you can have</td></tr>
+          <tr><td>Head visuals</td><td><code>${(org.headVisuals ?? []).length}</code></td><td>Faces available to your org — explored next chapter</td></tr>
+        </tbody>
+      </table></div>`;
+    return { json, html };
+  });
+
+  // Send each field in both lowercase and camelCase (e.g. headvisualid and
+  // headVisualId) so the payload is accepted in either form.
+  const CAMEL = {
+    headvisualid: 'headVisualId', operationmode: 'operationMode',
+    ttsprovider: 'ttsProvider', ttsvoice: 'ttsVoice',
+    languagespeechrecognition: 'languageSpeechRecognition',
+    promptconfig: 'promptConfig', ocprovider: 'ocProvider',
+    videostreaming: 'videoStreaming', orgid: 'orgId',
+    pluginoperationalmodeconfig: 'pluginOperationalModeConfig',
+  };
+  const withCamel = (payload) => {
+    const out = { ...payload };
+    for (const [k, v] of Object.entries(payload)) if (CAMEL[k]) out[CAMEL[k]] = v;
+    return out;
+  };
+
+  // Chapter 3 — create the OC head from the page
+  wireRunner('run-create', 'create-out', 'create-raw', async () => {
+    const hv = (data.headVisualId ?? '').trim();
+    if (!hv) throw new Error('Set a head visual id first (Chapter 2 — "Use this face").');
+    const name = document.getElementById('create-name').value.trim() || 'demo-oc';
+    const prompt = document.getElementById('create-prompt').value.trim() || 'You are a helpful assistant.';
+    const json = await liveApi('POST', '/head/create', withCamel({
+      headvisualid: hv,
+      name,
+      alias: 'Demo Assistant',
+      operationmode: 'oc',
+      // The system prompt key is system_prompt (snake_case).
+      promptconfig: { system_prompt: prompt },
+      ttsprovider: 'elevenlabs',
+      // A real voiceId from the catalogue (Chapter 2) — "Alice", ElevenLabs Turbo v2.5
+      ttsvoice: 'Xb7hH8MSUJpSbSDYk0k2_eleven_turbo_v2_5',
+      ocprovider: 'playground',
+      languagespeechrecognition: 'en-US',
+      language: 'en-US',
+      greetings: 'Hi! I was created live, thirty seconds ago, with one API call.',
+      videostreaming: true,
+    }));
+    const publicId = json.publicId ?? json.publicid;
+    if (publicId) setField('headId', publicId);
+    if (json.id) setField('headUuid', json.id);
+    const url = json.publicUrl ?? json.publicurl ?? '';
+    return {
+      json,
+      html: `<span class="ok">✓ Head "${esc(name)}" created — id saved to the panel.</span>
+        ${url ? `<p style="margin: 8px 0 0;"><a href="${esc(url)}" target="_blank" rel="noopener">Open it and say hello ↗</a> — then refresh interFace to see it in the dashboard.</p>` : ''}`,
+    };
+  });
+
+  // Chapter 4 — create the plugin head, wired to the tunnel from the panel
+  wireRunner('run-create-plugin', 'create-plugin-out', 'create-plugin-raw', async () => {
+    const hv = (data.headVisualId ?? '').trim();
+    if (!hv) throw new Error('Set a head visual id first (Chapter 2).');
+    const tunnel = (data.tunnelUrl ?? '').trim().replace(/\/$/, '');
+    if (!tunnel) throw new Error('Set the Tunnel URL in the panel first (start ngrok, copy from 127.0.0.1:4040).');
+    const name = document.getElementById('create-plugin-name').value.trim() || 'demo-plugin';
+    const json = await liveApi('POST', '/head/create', withCamel({
+      headvisualid: hv,
+      name,
+      alias: 'Plugin Demo',
+      operationmode: 'plugin',
+      pluginoperationalmodeconfig: { name: 'demo-local-server', url: `${tunnel}/plugin`, options: {} },
+      ttsprovider: 'elevenlabs',
+      ttsvoice: 'Xb7hH8MSUJpSbSDYk0k2_eleven_turbo_v2_5',
+      ocprovider: 'playground',
+      languagespeechrecognition: 'en-US',
+      language: 'en-US',
+      greetings: 'Hi! Everything I say from now on comes from a server YOU control.',
+      videostreaming: true,
+    }));
+    const publicId = json.publicId ?? json.publicid;
+    if (publicId) setField('headId', publicId);
+    if (json.id) setField('headUuid', json.id);
+    const url = json.publicUrl ?? json.publicurl ?? '';
+    return {
+      json,
+      html: `<span class="ok">✓ Plugin head "${esc(name)}" created, wired to ${esc(tunnel)}/plugin.</span>
+        ${url ? `<p style="margin: 8px 0 0;"><a href="${esc(url)}" target="_blank" rel="noopener">Talk to it ↗</a> — and watch the server console.</p>` : ''}`,
+    };
+  });
+
+  // Chapter 5 — wire the two demo tools + the prompt block that activates them
+  wireRunner('run-tools', 'tools-out', 'tools-raw', async () => {
+    const uuid = (data.headUuid ?? '').trim();
+    if (!uuid) throw new Error('Set the head uuid in the panel (from an OC head created in Chapter 3).');
+    const tunnel = (data.tunnelUrl ?? '').trim().replace(/\/$/, '');
+    if (!tunnel) throw new Error('Set the Tunnel URL in the panel first.');
+    const current = await liveApi('GET', `/head/${uuid}/conversation-settings`);
+    // Parameters are a LIST of {name, description} objects — any other shape
+    // stops the head from loading at all.
+    const tools = [
+      {
+        name: 'check_policy_status',
+        description: 'Check the status of the insurance policy of the current user',
+        url: `${tunnel}/tools/policy-status`,
+        parameters: [{ name: 'policy_holder', description: 'The full name of the policy holder' }],
+      },
+      {
+        name: 'capture_lead',
+        description: 'Save a new sales lead. Call this as soon as the user has provided their email address.',
+        url: `${tunnel}/tools/capture-lead`,
+        parameters: [
+          { name: 'name', description: 'The name of the user' },
+          { name: 'email', description: 'The email address of the user' },
+        ],
+      },
+    ];
+    const TOOLS_PROMPT =
+      'Prioritise natural, engaging speech cadence. You are the virtual assistant of Meridian Insurance in a live demo. ' +
+      'Keep every answer short and conversational, one or two spoken sentences, no markdown. ' +
+      "LEAD CAPTURE: your first goal is to learn the visitor's name, and after that their email address. Ask naturally, one thing at a time. " +
+      'The moment the user provides their email address, call the capture_lead tool with the parameters name and email. ' +
+      'POLICY QUESTIONS: if the user asks about their policy or its status, call the check_policy_status tool and answer with what it returns. ' +
+      'TOOL RESULTS: after any tool responds, follow the instructions contained in the tool result faithfully.';
+    const settingsResult = await liveApi('PUT', `/head/${uuid}/conversation-settings`, {
+      conversationSettings: { ...(current.conversationSettings ?? {}), tools },
+    });
+    await liveApi('PUT', '/head/update', { id: uuid, promptConfig: { system_prompt: TOOLS_PROMPT } });
+    return {
+      json: settingsResult,
+      html: `<span class="ok">✓ Both tools wired to ${esc(tunnel)}/tools/* and the activation prompt installed.</span>
+        <p style="margin: 8px 0 0;">Talk to the head: give it your name, then type your email — watch the server console for ⚡ NEW LEAD, and wait for the birthday greeting.</p>`,
+    };
+  });
+
+  // Chapter 6, step 1 — enable event delivery for the head.
+  // The switch is a QUERY PARAM (a JSON body is silently ignored), and it must
+  // be ON before registering — the reverse order delivers nothing.
+  wireRunner('run-enable-events', 'enable-events-out', 'enable-events-raw', async () => {
+    const uuid = (data.headUuid ?? '').trim();
+    if (!uuid) throw new Error('Set the head uuid in the panel first.');
+    await liveApi('PUT', `/head/${uuid}/enable-events?enableEvents=true`);
+    const enabled = await liveApi('GET', `/head/${uuid}/enable-events`);
+    if (String(enabled) !== 'true') throw new Error('The delivery switch still reads false — check the head uuid.');
+    return {
+      json: { enableEvents: enabled },
+      html: '<span class="ok">✓ Event delivery is ON for this head — now register your endpoint below.</span>',
+    };
+  });
+
+  // Chapter 6, step 2 — register the webhook for the events ticked above.
+  // POST /head-events {headId, webhookUrl, <event flags>} → {sharedKey}.
+  // POST duplicates instead of updating, so stale registrations are cleaned first.
+  wireRunner('run-webhook', 'webhook-out', 'webhook-raw', async () => {
+    const uuid = (data.headUuid ?? '').trim();
+    if (!uuid) throw new Error('Set the head uuid in the panel first.');
+    const tunnel = (data.tunnelUrl ?? '').trim().replace(/\/$/, '');
+    if (!tunnel) throw new Error('Set the Tunnel URL in the panel first.');
+    if (!tunnel.startsWith('https://')) throw new Error('The webhook URL must be public https — use the ngrok tunnel URL, not localhost.');
+    const events = {
+      startConversation: document.getElementById('ev-start').checked,
+      endConversation: document.getElementById('ev-end').checked,
+      inactivityWarning: document.getElementById('ev-inactivity').checked,
+      timeoutConversation: document.getElementById('ev-timeout').checked,
+    };
+    if (!Object.values(events).some(Boolean)) throw new Error('Tick at least one event.');
+    const enabled = await liveApi('GET', `/head/${uuid}/enable-events`);
+    if (String(enabled) !== 'true') throw new Error('Event delivery is OFF for this head — run Step 1 first.');
+    const existing = await liveApi('GET', `/head-events?headId=${uuid}`);
+    for (const reg of existing ?? []) {
+      await liveApi('DELETE', `/head-events/${reg.id}`);
+    }
+    const registration = await liveApi('POST', '/head-events', {
+      headId: uuid,
+      webhookUrl: `${tunnel}/webhooks/unith`,
+      ...events,
+    });
+    const picked = Object.entries(events).filter(([, v]) => v).map(([k]) => k).join(', ');
+    return {
+      json: registration,
+      html: `<span class="ok">✓ Webhook registered for ${esc(picked)} → ${esc(tunnel)}/webhooks/unith.${(existing ?? []).length ? ` ${existing.length} stale registration${existing.length > 1 ? 's' : ''} cleaned.` : ''}</span>
+        <p style="margin: 8px 0 0;">Shared key: <code>${esc(registration.sharedKey ?? '?')}</code> — put it in the server's <code>.env</code> as <code>UNITH_WEBHOOK_SECRET</code> and restart it: it verifies every delivery's HMAC signature.</p>`,
+    };
+  });
+
+  // Chapter 6 — browse conversations via the demo server (data API has no CORS).
+  // Try localhost first (the demo server usually runs on this machine); fall back
+  // to the tunnel — with the header that skips ngrok's browser interstitial.
+  async function fetchBackend(path) {
+    const bases = ['http://localhost:3000'];
+    const tunnel = (data.tunnelUrl ?? '').trim().replace(/\/$/, '');
+    if (tunnel) bases.push(tunnel);
+    let lastErr;
+    for (const base of bases) {
+      try {
+        // The extra header is only needed (and only sent) through ngrok — on
+        // localhost a plain GET stays a "simple request" (no CORS preflight).
+        const opts = base.includes('localhost') ? {} : { headers: { 'ngrok-skip-browser-warning': '1' } };
+        const res = await fetch(base + path, opts);
+        if (!res.ok) throw new Error(`${res.status} from ${base}`);
+        return await res.json();
+      } catch (err) { lastErr = err; }
+    }
+    throw new Error(`${lastErr?.message ?? 'unreachable'} — is the demo server running? (npm start)`);
+  }
+  const fmtTime = (t) => new Date(t.endsWith('Z') ? t : t + 'Z').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const fmtDur = (a, b) => {
+    const s = Math.max(0, Math.round((new Date(b + 'Z') - new Date(a + 'Z')) / 1000));
+    return s >= 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : `${s}s`;
+  };
+
+  let convsAll = [];
+  let logsPage = 1;
+  const LOGS_PER_PAGE = 10;
+  const fmtDay = (t) => new Date((t.endsWith('Z') ? t : t + 'Z')).toLocaleDateString([], { day: '2-digit', month: 'short' });
+
+  function renderLogsPage() {
+    const out = document.getElementById('logs-out');
+    const pages = Math.max(1, Math.ceil(convsAll.length / LOGS_PER_PAGE));
+    logsPage = Math.min(Math.max(1, logsPage), pages);
+    const slice = convsAll.slice((logsPage - 1) * LOGS_PER_PAGE, logsPage * LOGS_PER_PAGE);
+    const rows = slice.map((c, i) => `
+      <tr class="conv-row" data-i="${i}" title="Click to read as a chat">
+        <td>${esc(fmtDay(c.start_time))} ${esc(fmtTime(c.start_time))}</td>
+        <td>${esc(c.head_id ?? '')}</td>
+        <td>${esc(c.user_name ?? '')}</td>
+        <td>${esc(String(c.message_count ?? ''))}</td>
+        <td>${esc(fmtDur(c.start_time, c.end_time))}</td>
+        <td>${esc(c.device_type ?? '')}</td>
+      </tr>`).join('');
+    out.innerHTML = `<div class="tbl-wrap"><table>
+      <thead><tr><th>When</th><th>Head</th><th>User</th><th>Msgs</th><th>Duration</th><th>Device</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+    out.querySelectorAll('tr.conv-row').forEach((tr) =>
+      tr.addEventListener('click', () => openChat(slice[Number(tr.dataset.i)])));
+    const pager = document.getElementById('logs-pager');
+    pager.hidden = false;
+    document.getElementById('logs-meta').textContent = `page ${logsPage} of ${pages} · ${convsAll.length} conversations`;
+    document.getElementById('logs-prev').disabled = logsPage <= 1;
+    document.getElementById('logs-next').disabled = logsPage >= pages;
+  }
+  document.getElementById('logs-prev').addEventListener('click', () => { logsPage -= 1; renderLogsPage(); });
+  document.getElementById('logs-next').addEventListener('click', () => { logsPage += 1; renderLogsPage(); });
+
+  wireRunner('run-logs', 'logs-out', 'logs-raw', async () => {
+    const json = await fetchBackend('/logs/conversations');
+    convsAll = (json.conversations ?? []).filter((c) => Number(c.message_count) > 0);
+    if (!convsAll.length) return { json, html: '<span class="placeholder">No conversations with messages yet.</span>' };
+    logsPage = 1;
+    return { json, html: '', after: () => renderLogsPage() };
+  });
+
+  const chatbox = document.getElementById('chatbox');
+  async function openChat(conv) {
+    const body = document.getElementById('cb-body');
+    const meta = document.getElementById('cb-meta');
+    meta.innerHTML = `<strong>${esc(conv.head_id ?? '')}</strong> · ${esc(conv.user_name ?? '')} · ${esc(fmtTime(conv.start_time))} · ${esc(fmtDur(conv.start_time, conv.end_time))} · ${esc(conv.device_type ?? '')}`;
+    body.innerHTML = '<span class="placeholder">Loading transcript…</span>';
+    chatbox.hidden = false;
+    try {
+      const json = await fetchBackend(`/logs/session/${encodeURIComponent(conv.session_id)}`);
+      document.getElementById('cb-raw').textContent = JSON.stringify(json, null, 2);
+      const msgs = (json.messages ?? []).filter((m) => (m.text ?? '').trim());
+      body.innerHTML = msgs.map((m) => `
+        <div class="bub ${m.message_type === 'user_input' ? 'user' : 'ai'}">${esc(m.text)}<span class="bub-time">${esc(fmtTime(m.timestamp))}</span></div>`).join('')
+        || '<span class="placeholder">No messages in this session.</span>';
+      body.scrollTop = 0;
+    } catch (err) {
+      body.innerHTML = `<span class="error">⚠ ${esc(err.message)}</span>`;
+    }
+  }
+  document.getElementById('cb-close').addEventListener('click', () => { chatbox.hidden = true; });
+  chatbox.addEventListener('click', (e) => { if (e.target === chatbox) chatbox.hidden = true; });
+
+  // Chapter 7 — open the demo sites in a new tab (served by `npm run site`)
+  const SITE = 'http://localhost:8080';
+  function embedCreds() {
+    const org = (data.orgPublicId ?? '').trim();
+    const head = (data.headId ?? '').trim();
+    const key = (data.apiKey ?? '').trim();
+    if (!org || !head || !key) throw new Error('Fill org public id, head public id and org API key in the panel first (Chapters 1–3).');
+    return `org=${encodeURIComponent(org)}&head=${encodeURIComponent(head)}&key=${encodeURIComponent(key)}`;
+  }
+  document.getElementById('open-embedded').addEventListener('click', () => {
+    try { window.open(`${SITE}/client-site.html?${embedCreds()}`, '_blank'); } catch (err) { alert(err.message); }
+  });
+  document.getElementById('open-iframe').addEventListener('click', () => {
+    try { window.open(`${SITE}/client-site.html?${embedCreds()}&mode=iframe`, '_blank'); } catch (err) { alert(err.message); }
+  });
+  document.getElementById('open-blank-site').addEventListener('click', () => {
+    window.open(`${SITE}/client-site.html`, '_blank');
+  });
+  document.getElementById('open-playground').addEventListener('click', () => {
+    try { window.open(`${SITE}/sdk-playground.html?${embedCreds()}`, '_blank'); } catch (err) { alert(err.message); }
+  });
+  document.getElementById('open-floating').addEventListener('click', () => {
+    try { window.open(`${SITE}/layout-floating.html?${embedCreds()}`, '_blank'); } catch (err) { alert(err.message); }
+  });
+  document.getElementById('open-hero').addEventListener('click', () => {
+    try { window.open(`${SITE}/layout-hero.html?${embedCreds()}`, '_blank'); } catch (err) { alert(err.message); }
+  });
+  document.getElementById('open-tour').addEventListener('click', () => {
+    try { window.open(`${SITE}/layout-tour.html?${embedCreds()}`, '_blank'); } catch (err) { alert(err.message); }
+  });
+
+  // ── Chapter 8 — custom head visual, guided 4-step flow ─────────────────────
+  // Step state lives here (page reload = start over from upload):
+  let hvFile = null;      // the chosen File
+  let hvToken = null;     // step 1 → temporary upload token
+  let hvId = null;        // step 2 → the new visual id
+  let hvTaskId = null;    // step 2 → the processing task (checkable pre-save)
+  let hvSavedGender = 'female';
+  const HV_VOICES = {
+    female: 'Xb7hH8MSUJpSbSDYk0k2_eleven_turbo_v2_5',  // Alice
+    male: 'pNInz6obpgDQGcFmaJgB_eleven_turbo_v2_5',    // Adam
+  };
+
+  document.getElementById('hv-file').addEventListener('change', (e) => {
+    hvFile = e.target.files[0] ?? null;
+    const box = document.getElementById('hv-preview-box');
+    const vid = document.getElementById('hv-preview');
+    if (hvFile) {
+      vid.src = URL.createObjectURL(hvFile);
+      box.hidden = false;
+      document.getElementById('run-hv-upload').disabled = false;
+      const mb = (hvFile.size / 1024 / 1024).toFixed(2);
+      document.getElementById('hv-upload-out').innerHTML =
+        `<span class="placeholder">${esc(hvFile.name)} · ${mb} MB${hvFile.size > 20 * 1024 * 1024 ? ' <span class="error">⚠ quite heavy — uploads over ~20 MB may be rejected</span>' : ''} — check the preview, then upload.</span>`;
+    } else {
+      box.hidden = true;
+      document.getElementById('run-hv-upload').disabled = true;
+    }
+  });
+
+  wireRunner('run-hv-upload', 'hv-upload-out', 'hv-upload-raw', async () => {
+    if (!hvFile) throw new Error('Choose an MP4 first.');
+    const bearer = (data.bearer ?? '').trim();
+    if (!bearer) throw new Error('Set the bearer token in the panel first (Chapter 1).');
+    const form = new FormData();
+    form.append('file', hvFile);
+    const res = await fetch(`${API}/video/upload`, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${bearer}` },  // content-type set by the browser (multipart boundary)
+      body: form,
+    });
+    const text = await res.text();
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${text.slice(0, 300)}`);
+    const json = JSON.parse(text);
+    hvToken = json.token ?? json.data?.token ?? null;
+    if (!hvToken) throw new Error('Upload succeeded but no token found in the response — see the raw response.');
+    document.getElementById('run-hv-create').disabled = false;
+    return { json, html: `<span class="ok">✓ Video uploaded — temporary token received. Now run step 2.</span>` };
+  });
+
+  // The two processing presets: a single idle loop, or idle + expressive state
+  // (mode two_loops_streaming — the head switches to the livelier state while
+  // speaking). The expressive preset is tuned for footage cut at 3.0 s.
+  const HV_PRESETS = {
+    default: { update: false, detector_version: 'v2', detector_threshold: 0.2, mode: 'default', cut_timestamp: 0.1, debug: false },
+    expressive: {
+      update: false, detector_version: 'v2', detector_threshold: -0.2,
+      mode: 'two_loops_streaming', cut_timestamp: 3.0, template_zoom_factor: 1.05,
+      mask_diameter_scale: 1.05, mask_offset_factor: 0.02, mask_sigma: 0.8, debug: false,
+    },
+  };
+
+  wireRunner('run-hv-create', 'hv-create-out', 'hv-create-raw', async () => {
+    if (!hvToken) throw new Error('Run step 1 first (upload the video).');
+    const bearer = (data.bearer ?? '').trim();
+    const preset = HV_PRESETS[document.getElementById('hv-mode').value] ?? HV_PRESETS.default;
+    const res = await fetch(`${API}/head_visual/create`, {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${bearer}`,
+        'x-head-video-token-id': hvToken,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(preset),
+    });
+    const text = await res.text();
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${text.slice(0, 300)}`);
+    const json = JSON.parse(text);
+    hvId = json.data?.id ?? json.id ?? null;
+    hvTaskId = json.data?.task_id ?? null;
+    if (!hvId) throw new Error('No visual id in the response — see the raw response.');
+    document.getElementById('run-hv-save').disabled = false;
+    document.getElementById('run-hv-check').disabled = false;
+    return { json, html: `<span class="ok">✓ Processing started — visual id <code>${esc(hvId)}</code>. Save it in step 3 (expressive visuals only accept the save once processing finishes — step 4 tells you when).</span>` };
+  });
+
+  wireRunner('run-hv-save', 'hv-save-out', 'hv-save-raw', async () => {
+    if (!hvId) throw new Error('Run step 2 first (create the visual).');
+    const name = document.getElementById('hv-name').value.trim() || 'my-custom-visual';
+    hvSavedGender = document.getElementById('hv-gender').value;
+    // gender and type are UPPERCASE enums (MALE/FEMALE, TALK) — lowercase 400s.
+    let json;
+    try {
+      json = await liveApi('POST', '/head_visual/save', { id: hvId, name, gender: hvSavedGender.toUpperCase(), type: 'TALK' });
+    } catch (err) {
+      if (String(err.message).includes('headVisualVideoInProgress')) {
+        throw new Error('Still processing — expressive visuals cannot be saved until they finish. Check step 4 until it reads COMPLETE, then run this save again.');
+      }
+      throw err;
+    }
+    document.getElementById('run-hv-check').disabled = false;
+    return {
+      json: json && Object.keys(json).length ? json : { saved: true },
+      html: `<span class="ok">✓ Saved as "${esc(name)}" (${esc(hvSavedGender)}) — it is in your catalogue. Check the processing in step 4.</span>`,
+    };
+  });
+
+  wireRunner('run-hv-check', 'hv-check-out', 'hv-check-raw', async () => {
+    if (!hvId) throw new Error('No visual in progress — run steps 1 and 2 first.');
+    // The processing job is checkable BEFORE saving via GET /task/{task_id};
+    // GET /head_visual/{id} only answers once the visual is saved.
+    if (hvTaskId) {
+      const task = await liveGet(`/task/${hvTaskId}`);
+      if (['IN_PROGRESS', 'PENDING', 'QUEUED'].includes(String(task.status).toUpperCase())) {
+        return { json: task, html: `<span class="placeholder">Processing: ${esc(task.status)} — check again in a minute.</span>` };
+      }
+    }
+    let v;
+    try {
+      v = await liveGet(`/head_visual/${hvId}`);
+    } catch (err) {
+      if (String(err.message).includes('invalidHeadVisual')) {
+        return { json: { note: 'processing finished, visual not saved yet' }, html: '<span class="ok">✓ Processing finished.</span> <span class="placeholder">Now run step 3 (save) — then check here again to see the result.</span>' };
+      }
+      throw err;
+    }
+    if (v.status !== 'COMPLETE') return { json: v, html: `<span class="placeholder">Status: ${esc(v.status)} — still processing, check again in a minute.</span>` };
+    return {
+      json: v,
+      html: `<span class="ok">✓ COMPLETE — this is your custom idle loop:</span>
+        <video src="${esc(v.videoUrl ?? v.video ?? '')}" autoplay muted loop playsinline style="max-width: 320px; border-radius: 10px; display: block; margin: 10px 0;"></video>
+        <button class="run" id="run-hv-head" type="button">Create a digital human with this face</button>
+        <div id="hv-head-out" style="margin-top: 8px;"></div>`,
+      after: (out) => {
+        out.querySelector('#run-hv-head').addEventListener('click', async () => {
+          const target = out.querySelector('#hv-head-out');
+          target.innerHTML = '<span class="placeholder">Creating…</span>';
+          try {
+            const head = await liveApi('POST', '/head/create', withCamel({
+              headvisualid: hvId,
+              name: 'custom-visual-demo',
+              alias: 'Custom Face Demo',
+              operationmode: 'oc',
+              promptconfig: { system_prompt: 'You are a friendly assistant wearing a brand-new custom face, created minutes ago in this very session. Keep answers short and conversational.' },
+              ttsprovider: 'elevenlabs',
+              ttsvoice: HV_VOICES[hvSavedGender] ?? HV_VOICES.female,
+              ocprovider: 'playground',
+              languagespeechrecognition: 'en-US',
+              language: 'en-US',
+              greetings: 'Hi! This face did not exist an hour ago — you just made it.',
+              videostreaming: true,
+            }));
+            const url = head.publicUrl ?? head.publicurl ?? '';
+            if (head.publicId) setField('headId', head.publicId);
+            if (head.id) setField('headUuid', head.id);
+            target.innerHTML = `<span class="ok">✓ Created with the ${esc(hvSavedGender)} demo voice.</span> ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">Talk to your custom face ↗</a>` : ''}`;
+          } catch (err) {
+            target.innerHTML = `<span class="error">⚠ ${esc(err.message)}</span>`;
+          }
+        });
+      },
+    };
+  });
+
+  // Chapter 3 — switch the voice from the page (management calls use the head UUID)
+  wireRunner('run-voice-switch', 'voice-switch-out', 'voice-switch-raw', async () => {
+    const headUuid = (data.headUuid ?? '').trim();
+    if (!headUuid) throw new Error('No head uuid in the panel — create a head first.');
+    const ttsprovider = document.getElementById('sv-provider').value.trim();
+    const ttsvoice = document.getElementById('sv-voice').value.trim();
+    if (!ttsprovider || !ttsvoice) throw new Error('Fill provider and voiceId (copy one from Chapter 2).');
+    const json = await liveApi('PUT', '/head/update', withCamel({ id: headUuid, ttsprovider, ttsvoice }));
+    return { json, html: '<span class="ok">✓ Voice updated — talk to the head again and hear the difference.</span>' };
+  });
+
+  const showError = (el, err) => {
+    el.innerHTML = `<span class="error">⚠ ${esc(err.message)}${err.message === 'Failed to fetch'
+      ? ' — usually a momentary network/gateway hiccup. Click Run again; if it keeps failing, use the terminal command below.' : ''}</span>`;
+  };
+
+  // Head visuals (click a card to preview the idle video in a lightbox)
+  let visualsList = [];
+  document.getElementById('run-visuals').addEventListener('click', async () => {
+    const out = document.getElementById('visuals-out');
+    out.innerHTML = '<span class="placeholder">Loading…</span>';
+    try {
+      const json = await liveGet('/head_visual/face/all?order=ASC&page=1&take=50');
+      document.getElementById('visuals-raw').textContent = JSON.stringify(json, null, 2);
+      document.getElementById('visuals-raw-wrap').hidden = false;
+      visualsList = json.data ?? [];
+      const cards = visualsList.map((v, i) => `
+        <div class="visual-card">
+          <img src="${esc(v.posterImage ?? v.avatar ?? '')}" alt="${esc(v.name)}" loading="lazy" data-i="${i}" title="Click to preview">
+          <div class="vc-body">
+            <div class="vc-name">${esc(v.name)}</div>
+            <div class="vc-meta">${esc((v.gender ?? '').toLowerCase())} · ${esc(v.permissionType ?? '')}</div>
+            <button type="button" data-id="${esc(v.id)}">Use this face</button>
+          </div>
+        </div>`).join('');
+      out.innerHTML = `<div class="visual-grid">${cards}</div>`;
+      out.querySelectorAll('button[data-id]').forEach((b) => b.addEventListener('click', () => {
+        setField('headVisualId', b.dataset.id);
+        b.textContent = '✓ set as head visual id';
+      }));
+      out.querySelectorAll('img[data-i]').forEach((img) =>
+        img.addEventListener('click', () => lbShow(Number(img.dataset.i))));
+    } catch (err) { showError(out, err); }
+  });
+
+  // Lightbox — preview the idle video, arrows to browse, pick from there
+  const lb = document.getElementById('lightbox');
+  const lbVideo = document.getElementById('lb-video');
+  let lbIndex = 0;
+
+  function lbShow(i) {
+    if (!visualsList.length) return;
+    lbIndex = (i + visualsList.length) % visualsList.length;
+    const v = visualsList[lbIndex];
+    lbVideo.poster = v.posterImage ?? '';
+    lbVideo.src = v.video ?? v.videoUrl ?? '';
+    document.getElementById('lb-name').textContent =
+      `${v.name} — ${(v.gender ?? '').toLowerCase()}  (${lbIndex + 1}/${visualsList.length})`;
+    const useBtn = document.getElementById('lb-use');
+    useBtn.textContent = (data.headVisualId === v.id) ? '✓ selected' : 'Use this face';
+    lb.hidden = false;
+  }
+  function lbClose() {
+    lb.hidden = true;
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+  }
+  document.getElementById('lb-close').addEventListener('click', lbClose);
+  document.getElementById('lb-prev').addEventListener('click', () => lbShow(lbIndex - 1));
+  document.getElementById('lb-next').addEventListener('click', () => lbShow(lbIndex + 1));
+  document.getElementById('lb-use').addEventListener('click', () => {
+    setField('headVisualId', visualsList[lbIndex].id);
+    document.getElementById('lb-use').textContent = '✓ selected';
+  });
+  lb.addEventListener('click', (e) => { if (e.target === lb) lbClose(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !document.getElementById('chatbox').hidden) {
+      document.getElementById('chatbox').hidden = true;
+      return;
+    }
+    if (lb.hidden) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft') lbShow(lbIndex - 1);
+    if (e.key === 'ArrowRight') lbShow(lbIndex + 1);
+  });
+
+  // Voices (filterable + paginated)
+  let voicePage = 1;
+  async function runVoices() {
+    const out = document.getElementById('voices-out');
+    out.innerHTML = '<span class="placeholder">Loading…</span>';
+    const q = new URLSearchParams({ order: 'ASC', page: String(voicePage), take: '50', sortBy: 'displayName' });
+    const f = (id, key) => { const v = document.getElementById(id).value.trim(); if (v) q.set(key, v); };
+    f('vf-language', 'language'); f('vf-gender', 'gender'); f('vf-provider', 'provider'); f('vf-name', 'displayName');
+    try {
+      const json = await liveGet(`/voice/all?${q}`);
+      document.getElementById('voices-raw').textContent = JSON.stringify(json, null, 2);
+      document.getElementById('voices-raw-wrap').hidden = false;
+      const rows = (json.data ?? []).map((v) => `
+        <tr>
+          <td>${esc(v.displayName)}</td>
+          <td>${esc(v.language)} (${esc(v.accent ?? '')})</td>
+          <td>${esc((v.gender ?? '').toLowerCase())}</td>
+          <td>${esc(v.provider)}</td>
+          <td><button type="button" class="mini" data-v="${esc(v.voiceId)}" title="Copy voice id">${esc(v.voiceId)}</button></td>
+        </tr>`).join('');
+      out.innerHTML = `<div class="tbl-wrap"><table>
+        <thead><tr><th>Name</th><th>Language</th><th>Gender</th><th>Provider</th><th>Voice id — click to copy</th></tr></thead>
+        <tbody>${rows}</tbody></table></div>`;
+      out.querySelectorAll('button.mini').forEach((b) => b.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(b.dataset.v);
+        const original = b.textContent;
+        b.textContent = '✓ copied';
+        setTimeout(() => { b.textContent = original; }, 1200);
+      }));
+      const meta = json.meta ?? {};
+      const pager = document.getElementById('voices-pager');
+      pager.hidden = false;
+      document.getElementById('voices-meta').textContent =
+        `page ${meta.page ?? voicePage} of ${meta.pageCount ?? '?'} · ${meta.itemCount ?? '?'} voices`;
+      document.getElementById('voices-prev').disabled = !meta.hasPreviousPage;
+      document.getElementById('voices-next').disabled = !meta.hasNextPage;
+    } catch (err) { showError(out, err); }
+  }
+  document.getElementById('run-voices').addEventListener('click', () => { voicePage = 1; runVoices(); });
+  document.getElementById('voices-prev').addEventListener('click', () => { voicePage = Math.max(1, voicePage - 1); runVoices(); });
+  document.getElementById('voices-next').addEventListener('click', () => { voicePage += 1; runVoices(); });
+  ['vf-language', 'vf-gender', 'vf-provider', 'vf-name'].forEach((id) =>
+    document.getElementById(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') { voicePage = 1; runVoices(); } }));
+</script>
+</body>
+</html>

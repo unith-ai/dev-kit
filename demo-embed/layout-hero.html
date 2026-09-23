@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDK Layout — Hero Concierge</title>
+<!--
+  Chapter 7, layout example 2 — the digital human AS the page: a fullscreen
+  hero concierge with the UI overlaid on top of the video. Same SDK, radically
+  different layout — the frontend is whatever you decide.
+  Open with ?org=…&head=…&key=…
+-->
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; background: #050d13; color: #fff; height: 100vh; overflow: hidden; }
+  #stage { position: fixed; inset: 0; }
+  .overlay {
+    position: fixed; inset: 0; z-index: 10;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: clamp(20px, 4vw, 48px);
+    background: linear-gradient(to top, rgba(5,13,19,0.75) 0%, rgba(5,13,19,0) 30%, rgba(5,13,19,0) 70%, rgba(5,13,19,0.6) 100%);
+    pointer-events: none;
+  }
+  .overlay > * { pointer-events: auto; }
+  .brand { font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.8125rem; }
+  .bottom { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+  #caption { min-height: 26px; font-size: clamp(1rem, 2vw, 1.375rem); font-style: italic; color: #ccdae7; text-align: center; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
+  #composer { display: none; gap: 8px; width: min(640px, 92vw); }
+  #composer input {
+    flex: 1; border: 1px solid rgba(255,255,255,0.3); background: rgba(5,13,19,0.6);
+    color: #fff; border-radius: 999px; padding: 14px 20px; font-size: 1rem;
+    backdrop-filter: blur(8px);
+  }
+  #composer button { background: #2563eb; color: #fff; border: 0; border-radius: 999px; padding: 14px 24px; font-weight: 600; cursor: pointer; }
+  #welcome {
+    position: fixed; inset: 0; z-index: 20; display: grid; place-items: center;
+    background: rgba(5, 13, 19, 0.55); text-align: center;
+  }
+  #welcome h1 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(1.75rem, 4vw, 3rem); margin: 0 0 8px; }
+  #welcome p { color: #9ab7d0; margin: 0 0 24px; }
+  #welcome button { background: #2563eb; color: #fff; border: 0; border-radius: 999px; padding: 16px 36px; font-size: 1.0625rem; font-weight: 600; cursor: pointer; }
+  #turnchip {
+    position: fixed; top: 20px; right: 20px; z-index: 15;
+    font-family: ui-monospace, Menlo, monospace; font-size: 0.71875rem;
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 4px 12px; color: #9ab7d0;
+    background: rgba(5,13,19,0.5);
+  }
+</style>
+</head>
+<body>
+
+<div id="stage"></div>
+<div id="turnchip">turn — idle</div>
+
+<div class="overlay">
+  <div class="brand">Meridian Insurance · Concierge</div>
+  <div class="bottom">
+    <div id="caption"></div>
+    <form id="composer"><input id="msg" placeholder="Ask me anything about your coverage…" autocomplete="off"><button type="submit">Ask</button></form>
+  </div>
+</div>
+
+<div id="welcome">
+  <div>
+    <h1>Good morning. I am your concierge.</h1>
+    <p>One click and we talk — voice or keyboard.</p>
+    <button id="start" type="button">Start the conversation</button>
+  </div>
+</div>
+
+<script type="module">
+  // Concurrency limit — the platform drops/refuses sessions over the org's
+  // limit (a developer account has 3 concurrent slots, and every open tab
+  // holds one). Surface it instead of going quiet.
+  window.warnIfLimit = (reason) => {
+    if (!['concurrency_limit_reached', 'high_demand'].includes(reason)) return;
+    if (document.getElementById('limit-banner')) return;
+    const b = document.createElement('div');
+    b.id = 'limit-banner';
+    b.innerHTML = '⚠ <strong>Concurrency limit reached</strong> — every open conversation holds one of your org\'s slots (a developer account has 3, and every open tab counts). Close another session and reload. Need more concurrency? <a href="mailto:sales@unith.ai" style="color:inherit">sales@unith.ai</a>';
+    b.style.cssText = 'position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:9999;max-width:min(560px,92vw);background:#5c1f1f;color:#fff;padding:12px 16px;border-radius:10px;font:0.8125rem/1.5 system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,0.45)';
+    document.body.appendChild(b);
+  };
+
+  const p = new URLSearchParams(location.search);
+  const orgId = p.get('org'), headId = p.get('head'), apiKey = p.get('key');
+  if (orgId && headId && apiKey) {
+    const { Session } = await import('https://esm.sh/@unith-ai/core-client@latest');
+
+    // Fullscreen: the container is the whole viewport; "cover" fills it.
+    const session = await Session.startDigitalHuman(document.getElementById('stage'), {
+      orgId, headId, apiKey,
+      username: 'hero-demo', dataTag: 'onboarding-session',
+      videoContainerStyle: 'cover',
+      microphone: { provider: 'eleven_labs' },
+    });
+
+    session.turn.subscribe((t) => { document.getElementById('turnchip').textContent = 'turn — ' + t.state; });
+    session.caption.subscribe((text) => { document.getElementById('caption').textContent = text; });
+    session.session.subscribe((s) => { if (s.status === 'disconnected') window.warnIfLimit(s.reason); });
+
+    document.getElementById('start').addEventListener('click', async () => {
+      await session.startSession();       // the user gesture
+      session.toggleCaptions();           // captions as cinematic subtitles
+      document.getElementById('welcome').remove();
+      document.getElementById('composer').style.display = 'flex';
+    });
+    document.getElementById('composer').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('msg');
+      if (session.turn.value.state === 'idle' && input.value.trim()) session.sendMessage(input.value);
+      input.value = '';
+    });
+  } else {
+    document.querySelector('#welcome p').textContent = 'Missing credentials — open with ?org=…&head=…&key=…';
+  }
+</script>
+
+</body>
+</html>

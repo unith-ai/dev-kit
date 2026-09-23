@@ -1,0 +1,26 @@
+# Credentials and local configuration — never commit these
+.env
+.env.*
+!.env.example
+
+# Local state written by the demo server scripts
+.token.json
+.demo-heads.json
+
+# Build output and locally built release packages
+dist/
+*.zip
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Insurance</title>
+<!--
+  Chapter 7, part 1 — a stand-in for YOUR website.
+  To try it: copy the unith-widget snippet from the companion guide,
+  paste it where marked below, save, refresh. That's the whole integration.
+
+  Serve it (mic needs localhost or HTTPS, Chrome):  npm run site
+-->
+<style>
+  :root {
+    --green-900: #0d3b2e;
+    --green-600: #1a6b52;
+    --green-100: #e3f0ea;
+    --ink: #182420;
+    --ink-2: #51625b;
+    --paper: #fbfdfc;
+    --line: #dde8e2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px clamp(24px, 6vw, 72px);
+    border-bottom: 1px solid var(--line);
+    font-family: system-ui, sans-serif;
+  }
+  .wordmark { font-weight: 700; font-size: 1.125rem; letter-spacing: 0.02em; color: var(--green-900); }
+  .wordmark::before { content: "◆ "; color: var(--green-600); }
+  nav a {
+    margin-left: 24px;
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  .hero {
+    padding: 72px clamp(24px, 6vw, 72px) 56px;
+    max-width: 720px;
+  }
+  .hero h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin: 0 0 16px; font-weight: 500; }
+  .hero p { font-size: 1.125rem; color: var(--ink-2); max-width: 52ch; }
+  .cta {
+    display: inline-block;
+    font-family: system-ui, sans-serif;
+    background: var(--green-900);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    margin-top: 8px;
+  }
+  .assistant {
+    margin: 24px clamp(24px, 6vw, 72px) 96px;
+    max-width: 860px;
+  }
+  .assistant h2 { font-weight: 500; font-size: 1.5rem; margin-bottom: 6px; }
+  .assistant p.sub { font-family: system-ui, sans-serif; color: var(--ink-2); font-size: 0.9375rem; margin-top: 0; }
+  .stage {
+    height: 420px;
+    border: 2px dashed var(--line);
+    border-radius: 12px;
+    background: var(--green-100);
+    display: grid;
+    place-items: center;
+    color: var(--ink-2);
+    font-family: system-ui, sans-serif;
+    font-size: 0.9375rem;
+  }
+  .stage:has(unith-widget) { border-style: solid; background: transparent; display: block; }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px clamp(24px, 6vw, 72px);
+    font-family: system-ui, sans-serif;
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+  .howit {
+    margin: 0 clamp(24px, 6vw, 72px) 96px;
+    max-width: 860px;
+    font-family: system-ui, sans-serif;
+  }
+  .howit h2 { font-family: Georgia, serif; font-weight: 500; font-size: 1.5rem; }
+  .howit p { color: var(--ink-2); font-size: 0.9375rem; max-width: 62ch; }
+  .howit pre {
+    background: var(--green-900);
+    color: #dcefe6;
+    border-radius: 10px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+  .howit code { background: var(--green-100); border-radius: 4px; padding: 1px 5px; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Meridian Insurance</div>
+  <nav>
+    <a href="#">Coverage</a><a href="#">Claims</a><a href="#">About</a><a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Coverage questions, answered before the coffee gets cold</h1>
+  <p>
+    Home, auto and travel policies for people who would rather not read forty
+    pages of terms. Talk to us — literally.
+  </p>
+  <a class="cta" href="#assistant">Ask our assistant</a>
+</section>
+
+<section class="assistant" id="assistant">
+  <h2>Talk to our assistant</h2>
+  <p class="sub">Live video, answers in seconds. Microphone or keyboard.</p>
+
+  <div class="stage">
+    <!-- ═══════════════════════════════════════════════════════════════
+         PASTE THE UNITH WIDGET SNIPPET HERE (from the companion page):
+
+         <script src="https://embedded-stream.unith.ai/index.js" defer></script>
+         <unith-widget
+           org_id="YOUR_ORG"
+           head_id="YOUR_HEAD"
+           api_key="YOUR_KEY"
+           username="demo-visitor"
+           tag="onboarding-session">
+         </unith-widget>
+         ═══════════════════════════════════════════════════════════════ -->
+    <span>Your assistant will appear here</span>
+  </div>
+</section>
+
+<footer>© Meridian Insurance — a fictional company for the UNITH Developer Kit demos.</footer>
+
+<script>
+  // Auto-embed mode: open as client-site.html?org=…&head=…&key=… and the
+  // digital human is injected into the stage, with a "How this works" section
+  // showing the exact snippet. Without params, the page stays blank for the
+  // paste-it-yourself exercise (see the comment inside .stage).
+  (function () {
+    const p = new URLSearchParams(location.search);
+    const org = p.get('org'), head = p.get('head'), key = p.get('key');
+    if (!org || !head || !key) return;
+
+    const mode = p.get('mode') === 'iframe' ? 'iframe' : 'widget';
+    const stage = document.querySelector('.stage');
+    stage.textContent = '';
+
+    if (mode === 'iframe') {
+      // The simplest possible embed: one sandboxed iframe of the public URL.
+      const frame = document.createElement('iframe');
+      frame.src = `https://stream.unith.ai/${org}/${head}?api_key=${key}`;
+      frame.style.cssText = 'width: 100%; height: 100%; border: 0; border-radius: 10px;';
+      frame.allow = 'microphone';
+      stage.appendChild(frame);
+    } else {
+      const widget = document.createElement('unith-widget');
+      widget.setAttribute('org_id', org);
+      widget.setAttribute('head_id', head);
+      widget.setAttribute('api_key', key);
+      widget.setAttribute('username', 'demo-visitor');
+      widget.setAttribute('tag', 'onboarding-session');
+      stage.appendChild(widget);
+      const loader = document.createElement('script');
+      loader.src = 'https://embedded-stream.unith.ai/index.js';
+      loader.defer = true;
+      document.body.appendChild(loader);
+    }
+
+    const how = document.createElement('section');
+    how.className = 'howit';
+    const h2 = document.createElement('h2');
+    h2.textContent = 'How this works';
+    const p1 = document.createElement('p');
+    p1.textContent = mode === 'iframe'
+      ? 'The assistant above is embedded in THIS page with a single iframe of the digital human public URL — the quickest possible integration:'
+      : 'The assistant above is not a link to another product — it is embedded in THIS page. This is the entire integration:';
+    const pre = document.createElement('pre');
+    pre.textContent = mode === 'iframe'
+      ? `<iframe
+  src="https://stream.unith.ai/${org}/${head}?api_key=${key.slice(0, 6)}…"
+  width="100%" height="420"
+  allow="microphone">
+</iframe>`
+      : `<script src="https://embedded-stream.unith.ai/index.js" defer><\/script>
+<unith-widget
+  org_id="${org}"
+  head_id="${head}"
+  api_key="${key.slice(0, 6)}…"
+  username="demo-visitor"
+  tag="onboarding-session">
+</unith-widget>`;
+    const p2 = document.createElement('p');
+    p2.innerHTML = mode === 'iframe'
+      ? 'The iframe needs <code>allow="microphone"</code> for voice input. Quickest to ship, least control — the widget and the SDK give you progressively more.'
+      : 'Three details that matter: attribute names use <code>underscores</code>, the container needs an explicit height, and the <code>username</code> / <code>tag</code> values reappear in your conversation logs and webhooks — that is how sessions connect to your systems.';
+    how.append(h2, p1, pre, p2);
+    document.querySelector('.assistant').after(how);
+  })();
+</script>
+
+</body>
+</html>

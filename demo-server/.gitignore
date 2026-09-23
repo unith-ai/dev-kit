@@ -1,0 +1,4 @@
+.env
+.token.json
+.demo-heads.json
+node_modules/

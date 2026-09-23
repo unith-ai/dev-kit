@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDK Layout — Scroll Tour</title>
+<!--
+  Chapter 7, layout example 3 — the digital human NARRATES the page.
+  As the visitor scrolls, each section fires sendMessage() with context and
+  the head presents what they are looking at. The point: any UI event —
+  scroll, click, form, route change — can drive the conversation.
+  Open with ?org=…&head=…&key=…
+-->
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; background: #fbfdfc; color: #182420; }
+  header { padding: 20px clamp(24px, 6vw, 72px); border-bottom: 1px solid #dde8e2; font-weight: 700; color: #0d3b2e; position: sticky; top: 0; background: #fbfdfc; z-index: 10; }
+  header::before { content: "◆ "; color: #1a6b52; }
+  section.step {
+    min-height: 92vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 48px clamp(24px, 6vw, 72px);
+    border-bottom: 1px solid #dde8e2;
+    max-width: 860px;
+  }
+  section.step h2 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin: 0 0 12px; }
+  section.step p { color: #51625b; line-height: 1.7; max-width: 58ch; font-size: 1.0625rem; }
+  section.step .kicker { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1a6b52; font-weight: 600; }
+
+  /* The narrator — fixed card, always visible */
+  #narrator {
+    position: fixed; right: 24px; bottom: 24px; z-index: 500;
+    width: 260px; border-radius: 14px; overflow: hidden;
+    background: #0d3b2e; box-shadow: 0 14px 40px rgba(13, 59, 46, 0.4);
+  }
+  #stage { width: 100%; height: 260px; background: #06251c; position: relative; }
+  #narrator .strip {
+    color: #cfe7dc; font-size: 0.71875rem; padding: 8px 12px; min-height: 34px;
+    font-style: italic; line-height: 1.45;
+  }
+  #start-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(6, 37, 28, 0.6); z-index: 5; }
+  #start-overlay button { background: #2563eb; color: #fff; border: 0; border-radius: 999px; padding: 10px 20px; font-weight: 600; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<header>Meridian Insurance — guided tour</header>
+
+<section class="step" data-topic="the welcome. Greet the visitor and invite them to scroll down through the tour of Meridian Insurance">
+  <span class="kicker">Welcome</span>
+  <h2>Scroll, and I will walk you through</h2>
+  <p>This page has a guide. As you scroll, the assistant in the corner presents
+  each section — the page itself is driving the conversation. Press ▶ on the
+  card to begin.</p>
+</section>
+
+<section class="step" data-topic="home insurance: coverage for fire, water damage and theft, with a 24-hour claims promise">
+  <span class="kicker">Product</span>
+  <h2>Home, covered end to end</h2>
+  <p>Fire, water damage, theft — with a claims decision inside 24 hours. No
+  forty-page terms, no surprises in the small print.</p>
+</section>
+
+<section class="step" data-topic="auto insurance: pay-per-kilometer pricing and instant roadside assistance">
+  <span class="kicker">Product</span>
+  <h2>Auto, priced by the kilometer</h2>
+  <p>Drive little, pay little. Roadside assistance dispatches instantly from
+  the app, and your no-claims bonus follows you.</p>
+</section>
+
+<section class="step" data-topic="the closing: invite the visitor to ask you anything about Meridian or request a quote">
+  <span class="kicker">Get started</span>
+  <h2>Talk to me</h2>
+  <p>That was the tour. Ask the guide anything — or request a quote and a human
+  will call you back today.</p>
+</section>
+
+<div id="narrator">
+  <div id="stage">
+    <div id="start-overlay"><button id="start" type="button">▶ Start the tour</button></div>
+  </div>
+  <div class="strip" id="caption">Your guide is ready.</div>
+</div>
+
+<script type="module">
+  // Concurrency limit — the platform drops/refuses sessions over the org's
+  // limit (a developer account has 3 concurrent slots, and every open tab
+  // holds one). Surface it instead of going quiet.
+  window.warnIfLimit = (reason) => {
+    if (!['concurrency_limit_reached', 'high_demand'].includes(reason)) return;
+    if (document.getElementById('limit-banner')) return;
+    const b = document.createElement('div');
+    b.id = 'limit-banner';
+    b.innerHTML = '⚠ <strong>Concurrency limit reached</strong> — every open conversation holds one of your org\'s slots (a developer account has 3, and every open tab counts). Close another session and reload. Need more concurrency? <a href="mailto:sales@unith.ai" style="color:inherit">sales@unith.ai</a>';
+    b.style.cssText = 'position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:9999;max-width:min(560px,92vw);background:#5c1f1f;color:#fff;padding:12px 16px;border-radius:10px;font:0.8125rem/1.5 system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,0.45)';
+    document.body.appendChild(b);
+  };
+
+  const p = new URLSearchParams(location.search);
+  const orgId = p.get('org'), headId = p.get('head'), apiKey = p.get('key');
+  if (orgId && headId && apiKey) {
+    const { Session } = await import('https://esm.sh/@unith-ai/core-client@latest');
+    const session = await Session.startDigitalHuman(document.getElementById('stage'), {
+      orgId, headId, apiKey,
+      username: 'tour-demo', dataTag: 'onboarding-session',
+      videoContainerStyle: 'cover',
+      microphone: { provider: 'eleven_labs' },
+    });
+    session.caption.subscribe((t) => { if (t) document.getElementById('caption').textContent = t; });
+    session.session.subscribe((s) => { if (s.status === 'disconnected') window.warnIfLimit(s.reason); });
+
+    // Scroll → conversation, STRICTLY one at a time:
+    // · `busy` flips synchronously on send (the turn observable updates async,
+    //   so two fast sends could both see "idle" — this flag closes that gap).
+    // · While busy, only the LATEST topic is kept; it plays when idle returns.
+    // · A settle timer skips sections you scroll past without stopping.
+    let started = false;
+    let busy = false;
+    let pendingTopic = null;
+    let lastSpoken = null;
+    const speak = (topic) => {
+      if (!started || topic === lastSpoken) return;
+      if (busy || session.turn.value.state !== 'idle') { pendingTopic = topic; return; }
+      busy = true;
+      lastSpoken = topic;
+      pendingTopic = null;
+      session.sendMessage(`You are the tour guide of this web page. The visitor has just scrolled to ${topic}. Present it in one or two short spoken sentences. Do not ask questions unless it is the closing section.`);
+    };
+    session.turn.subscribe((t) => {
+      if (t.state !== 'idle') { busy = true; return; }
+      busy = false;
+      if (pendingTopic) {
+        const next = pendingTopic;
+        pendingTopic = null;
+        speak(next);
+      }
+    });
+
+    let settleTimer = null;
+    const observer = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        clearTimeout(settleTimer);
+        const topic = e.target.dataset.topic;
+        settleTimer = setTimeout(() => speak(topic), 700);
+      }
+    }, { threshold: 0.6 });
+    document.querySelectorAll('section.step').forEach((s) => observer.observe(s));
+
+    document.getElementById('start').addEventListener('click', async () => {
+      await session.startSession();     // the user gesture
+      document.getElementById('start-overlay').remove();
+      started = true;
+      speak(document.querySelectorAll('section.step')[0].dataset.topic);
+    });
+  } else {
+    document.getElementById('caption').textContent = 'Missing credentials — open with ?org=…&head=…&key=…';
+  }
+</script>
+
+</body>
+</html>

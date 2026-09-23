@@ -1,0 +1,23 @@
+{
+  "name": "unith-demo-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UNITH technical onboarding demo — plugin-mode server, webhook receiver, and API scripts. Zero dependencies.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "site": "node scripts/serve-site.js",
+    "create:oc": "node scripts/create-oc-head.js",
+    "create:plugin": "node scripts/create-plugin-head.js",
+    "discovery": "node scripts/discovery.js",
+    "voice": "node scripts/set-voice.js",
+    "llm": "node scripts/set-llm.js",
+    "tools": "node scripts/set-tools.js",
+    "webhook": "node scripts/register-webhook.js",
+    "logs": "node scripts/fetch-logs.js",
+    "reset": "node scripts/reset.js"
+  }
+}

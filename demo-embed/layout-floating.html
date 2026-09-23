@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDK Layout — Floating Assistant</title>
+<!--
+  Chapter 7, layout example 1 — a floating, DRAGGABLE assistant bubble.
+  The point: with the SDK the digital human is just a <div> you own — put it
+  anywhere, move it, restyle it. Open with ?org=…&head=…&key=…
+  · Collapsed: a circle showing the idle avatar PREVIEW (Session.getAvatarPreview
+    — no connection yet). Drag it anywhere on the screen.
+  · Click: expands into a card and starts the real session (the click is the
+    user gesture that allows playback).
+-->
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; background: #fbfdfc; color: #182420; }
+  header { padding: 20px clamp(24px, 6vw, 72px); border-bottom: 1px solid #dde8e2; font-weight: 700; color: #0d3b2e; }
+  header::before { content: "◆ "; color: #1a6b52; }
+  main { padding: 48px clamp(24px, 6vw, 72px); max-width: 760px; }
+  main h1 { font-family: Georgia, serif; font-weight: 500; font-size: 2.25rem; }
+  main p { color: #51625b; line-height: 1.7; max-width: 60ch; }
+
+  /* The assistant — one fixed, draggable element */
+  #assistant { position: fixed; right: 28px; bottom: 28px; z-index: 500; touch-action: none; }
+  #bubble {
+    width: 96px; height: 96px; border-radius: 50%;
+    overflow: hidden; cursor: grab; position: relative;
+    border: 3px solid #0d3b2e;
+    box-shadow: 0 10px 30px rgba(13, 59, 46, 0.35);
+    background: #0d3b2e;
+  }
+  #bubble video { width: 100%; height: 100%; object-fit: cover; }
+  #bubble .hint {
+    position: absolute; inset: auto 0 0 0; text-align: center;
+    background: rgba(13, 59, 46, 0.85); color: #fff; font-size: 0.5625rem;
+    padding: 2px 0; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  #card {
+    display: none; width: 320px; height: 480px;
+    border-radius: 16px; overflow: hidden; background: #0d3b2e;
+    box-shadow: 0 16px 48px rgba(13, 59, 46, 0.45);
+    flex-direction: column;
+  }
+  #card.open { display: flex; }
+  #card .bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 12px; color: #fff; font-size: 0.75rem; cursor: grab;
+    background: rgba(255, 255, 255, 0.06); user-select: none;
+  }
+  #card .bar button { background: none; border: 0; color: #fff; font-size: 1rem; cursor: pointer; }
+  #stage { flex: 1; min-height: 0; background: #06251c; }
+  #card form { display: flex; gap: 6px; padding: 10px; }
+  #card input { flex: 1; border: 0; border-radius: 8px; padding: 9px 11px; font-size: 0.8125rem; }
+  #card button.send { background: #1a6b52; color: #fff; border: 0; border-radius: 8px; padding: 9px 13px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<header>Meridian Insurance</header>
+<main>
+  <h1>The assistant lives wherever you put it</h1>
+  <p>With the SDK, the digital human renders into any element you own — so the
+  frontend is entirely yours. This one is a floating bubble: <strong>drag it
+  anywhere</strong> on the screen, and <strong>click it</strong> to start a
+  conversation. Collapsed, it shows the idle avatar preview without even
+  opening a connection.</p>
+  <p>Scroll, read, do your thing — the assistant follows the viewport, not the
+  page.</p>
+</main>
+
+<div id="assistant">
+  <div id="bubble"><span class="hint">drag · click</span></div>
+  <div id="card">
+    <div class="bar"><span>Meridian assistant — drag me</span><button id="close" type="button" aria-label="Close">✕</button></div>
+    <div id="stage"></div>
+    <form id="form"><input id="msg" placeholder="Type here…" autocomplete="off"><button class="send" type="submit">Send</button></form>
+  </div>
+</div>
+
+<script type="module">
+  // Concurrency limit — the platform drops/refuses sessions over the org's
+  // limit (a developer account has 3 concurrent slots, and every open tab
+  // holds one). Surface it instead of going quiet.
+  window.warnIfLimit = (reason) => {
+    if (!['concurrency_limit_reached', 'high_demand'].includes(reason)) return;
+    if (document.getElementById('limit-banner')) return;
+    const b = document.createElement('div');
+    b.id = 'limit-banner';
+    b.innerHTML = '⚠ <strong>Concurrency limit reached</strong> — every open conversation holds one of your org\'s slots (a developer account has 3, and every open tab counts). Close another session and reload. Need more concurrency? <a href="mailto:sales@unith.ai" style="color:inherit">sales@unith.ai</a>';
+    b.style.cssText = 'position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:9999;max-width:min(560px,92vw);background:#5c1f1f;color:#fff;padding:12px 16px;border-radius:10px;font:0.8125rem/1.5 system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,0.45)';
+    document.body.appendChild(b);
+  };
+
+  const p = new URLSearchParams(location.search);
+  const orgId = p.get('org'), headId = p.get('head'), apiKey = p.get('key');
+  const assistant = document.getElementById('assistant');
+  const bubble = document.getElementById('bubble');
+  const card = document.getElementById('card');
+  let session = null;
+
+  const { Session } = await import('https://esm.sh/@unith-ai/core-client@latest');
+
+  // Collapsed state: the idle avatar PREVIEW — no connection is open yet.
+  if (orgId && headId) {
+    try {
+      const previewUrl = await Session.getAvatarPreview({ orgId, headId });
+      const v = document.createElement('video');
+      v.src = previewUrl; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+      bubble.prepend(v);
+    } catch { /* preview is optional */ }
+  }
+
+  // Dragging — the whole assistant is a fixed element you can move around.
+  let drag = null;
+  const startDrag = (e) => {
+    drag = { x: e.clientX, y: e.clientY, r: assistant.getBoundingClientRect(), moved: false };
+    e.preventDefault();
+  };
+  window.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 6) drag.moved = true;
+    assistant.style.left = Math.max(4, Math.min(drag.r.left + dx, innerWidth - drag.r.width - 4)) + 'px';
+    assistant.style.top = Math.max(4, Math.min(drag.r.top + dy, innerHeight - drag.r.height - 4)) + 'px';
+    assistant.style.right = 'auto'; assistant.style.bottom = 'auto';
+  });
+  window.addEventListener('pointerup', async () => {
+    const wasClick = drag && !drag.moved;
+    drag = null;
+    if (wasClick) await expand();   // a clean click (no drag) opens the card
+  });
+  bubble.addEventListener('pointerdown', startDrag);
+  card.querySelector('.bar').addEventListener('pointerdown', (e) => { if (e.target.tagName !== 'BUTTON') startDrag(e); });
+
+  // Expand = connect + start (this click IS the user gesture playback needs).
+  async function expand() {
+    if (card.classList.contains('open') || !orgId || !headId || !apiKey) return;
+    bubble.style.display = 'none';
+    card.classList.add('open');
+    session = await Session.startDigitalHuman(document.getElementById('stage'), {
+      orgId, headId, apiKey, username: 'floating-demo', dataTag: 'onboarding-session',
+      microphone: { provider: 'eleven_labs' },
+    });
+    session.session.subscribe((s) => { if (s.status === 'disconnected') window.warnIfLimit(s.reason); });
+    await session.startSession();
+    session.turn.subscribe((t) => { document.getElementById('msg').placeholder = t.state === 'idle' ? 'Type here…' : t.state + '…'; });
+  }
+  document.getElementById('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = document.getElementById('msg');
+    if (session && session.turn.value.state === 'idle' && input.value.trim()) session.sendMessage(input.value);
+    input.value = '';
+  });
+  document.getElementById('close').addEventListener('click', async () => {
+    card.classList.remove('open');
+    bubble.style.display = 'block';
+    if (session) { await session.endSession(); session = null; }
+  });
+</script>
+
+</body>
+</html>
